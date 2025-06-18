@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- ===================================
+         إعدادات الرأس الأساسية وتحسين SEO
+         =================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="لوحة التحكم الشاملة لإدارة المحلات التجارية في ليبيا - نظام متكامل لإدارة المبيعات والمخزون والموظفين">
+    <meta name="keywords" content="لوحة تحكم, إدارة المحلات, نظام نقاط البيع, المخزون, المبيعات, ليبيا, تقارير مالية">
+    <meta name="author" content="منصة إدارة المحلات الليبية">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- تحسين SEO -->
+    <title>لوحة التحكم الرئيسية | منصة إدارة المحلات الليبية</title>
+    <meta property="og:title" content="لوحة التحكم - منصة إدارة المحلات الليبية">
+    <meta property="og:description" content="نظام شامل لإدارة المحلات التجارية مع أدوات متقدمة للمبيعات والمخزون والتقارير">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_LY">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- تحسين الأداء -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- الخطوط العربية المحسنة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS للتصميم المتجاوب -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Chart.js للرسوم البيانية -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- تخصيص Tailwind CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            500: '#5D5CDE',
+                            600: '#4c46c7',
+                            700: '#3b359e',
+                            800: '#2a2575',
+                            900: '#1a164c'
+                        }
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
+    
+    <!-- أنماط CSS مخصصة -->
+    <style>
+        /* تحسين الخطوط والنصوص العربية */
+        body {
+            font-family: 'Cairo', sans-serif;
+            font-feature-settings: 'liga' 1, 'kern' 1;
+        }
+        
+        /* تحسين الحركات والانتقالات */
+        .smooth-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* بطاقات الإحصائيات المحسنة */
+        .stat-card {
+            background: linear-gradient(135deg, var(--tw-gradient-from), var(--tw-gradient-to));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* تحسين الرسوم البيانية */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+        
+        /* تحسين شريط التمرير */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #5D5CDE;
+            border-radius: 3px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #4c46c7;
+        }
+        
+        /* تحسين الرسوم المتحركة */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* تحسين الاستجابة للأجهزة المحمولة */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            
+            .mobile-menu.open {
+                transform: translateX(0);
+            }
+        }
+        
+        /* تحسين الوضع المظلم */
+        .dark .stat-card {
+            background: linear-gradient(135deg, rgba(45, 55, 72, 0.8), rgba(26, 32, 44, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* مؤشر التحميل المحسن */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #5D5CDE;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* تحسين الأداء للأجهزة الضعيفة */
+        .low-performance * {
+            animation-duration: 0.1s !important;
+            transition-duration: 0.1s !important;
+        }
+
+        /* إخفاء المحتوى أثناء التحميل */
+        .loading-content {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .content-loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 font-cairo smooth-transition">
+    <!-- ===================================
+         القائمة الجانبية المتطورة
+         =================================== -->
+    <div id="sidebar" class="fixed right-0 top-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl transform translate-x-0 transition-transform duration-300 ease-in-out z-50 custom-scrollbar overflow-y-auto">
+        <!-- رأس القائمة الجانبية -->
+        <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-store text-white text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-gray-800 dark:text-white">منصة المحلات</h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">إدارة متكاملة</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- عناصر القائمة الجانبية -->
+        <nav class="p-4">
+            <div class="space-y-2">
+                <!-- لوحة التحكم -->
+                <a href="#dashboard" class="sidebar-item active flex items-center space-x-3 space-x-reverse p-3 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400">
+                    <i class="fas fa-tachometer-alt w-5"></i>
+                    <span class="font-medium">لوحة التحكم</span>
+                </a>
+                
+                <!-- المبيعات -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">المبيعات</h3>
+                    <a href="#sales" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-cash-register w-5"></i>
+                        <span>نقاط البيع</span>
+                    </a>
+                    <a href="#invoices" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-file-invoice-dollar w-5"></i>
+                        <span>الفواتير</span>
+                    </a>
+                    <a href="#customers" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-users w-5"></i>
+                        <span>العملاء</span>
+                    </a>
+                </div>
+                
+                <!-- المخزون -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">المخزون</h3>
+                    <a href="#products" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-boxes w-5"></i>
+                        <span>المنتجات</span>
+                    </a>
+                    <a href="#categories" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-tags w-5"></i>
+                        <span>الفئات</span>
+                    </a>
+                    <a href="#suppliers" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-truck w-5"></i>
+                        <span>الموردين</span>
+                    </a>
+                </div>
+                
+                <!-- الموارد البشرية -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">الموارد البشرية</h3>
+                    <a href="#employees" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-user-tie w-5"></i>
+                        <span>الموظفين</span>
+                    </a>
+                    <a href="#attendance" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-clock w-5"></i>
+                        <span>الحضور والانصراف</span>
+                    </a>
+                </div>
+                
+                <!-- التقارير والتحليلات -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">التقارير</h3>
+                    <a href="#reports" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-chart-line w-5"></i>
+                        <span>التقارير المالية</span>
+                    </a>
+                    <a href="#analytics" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-analytics w-5"></i>
+                        <span>التحليلات</span>
+                    </a>
+                </div>
+                
+                <!-- الإعدادات -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">الإعدادات</h3>
+                    <a href="#settings" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-cog w-5"></i>
+                        <span>إعدادات النظام</span>
+                    </a>
+                    <a href="#profile" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-user-circle w-5"></i>
+                        <span>الملف الشخصي</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <!-- ===================================
+         الطبقة العلوية للمحتوى الرئيسي
+         =================================== -->
+    <div id="main-content" class="mr-64 transition-all duration-300">
+        <!-- الشريط العلوي المحسن -->
+        <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
+            <div class="px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- الجانب الأيمن - العنوان والبحث -->
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <!-- زر إخفاء القائمة الجانبية -->
+                        <button id="toggleSidebar" class="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-bars text-lg"></i>
+                        </button>
+                        
+                        <!-- معلومات الصفحة -->
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-800 dark:text-white">لوحة التحكم</h1>
+                            <p class="text-sm text-gray-500 dark:text-gray-400" id="shopWelcome">نظرة عامة على أداء محلك</p>
+                        </div>
+                    </div>
+                    
+                    <!-- الجانب الأيسر - الإشعارات والإعدادات -->
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <!-- شريط البحث -->
+                        <div class="hidden md:block relative">
+                            <input type="search" placeholder="البحث..." class="w-64 pr-10 pl-4 py-2 text-base bg-gray-100 dark:bg-gray-700 border-0 rounded-lg focus:ring-2 focus:ring-primary-500 dark:text-white">
+                            <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                        
+                        <!-- زر تبديل الوضع المظلم -->
+                        <button id="darkModeToggle" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400">
+                            <i class="fas fa-moon text-lg dark:hidden"></i>
+                            <i class="fas fa-sun text-lg hidden dark:inline"></i>
+                        </button>
+                        
+                        <!-- الإشعارات -->
+                        <div class="relative">
+                            <button id="notificationsBtn" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400 relative">
+                                <i class="fas fa-bell text-lg"></i>
+                                <span id="notificationCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                            </button>
+                        </div>
+                        
+                        <!-- معلومات المستخدم -->
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="hidden md:block text-right">
+                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300" id="userName">جاري التحميل...</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400" id="userRole">جاري التحميل...</p>
+                            </div>
+                            <div class="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
+                                <span class="text-white font-medium" id="userInitial">؟</span>
+                            </div>
+                        </div>
+                        
+                        <!-- زر تسجيل الخروج -->
+                        <button id="logoutBtn" class="p-2 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20">
+                            <i class="fas fa-sign-out-alt text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- ===================================
+             المحتوى الرئيسي للوحة التحكم
+             =================================== -->
+        <main class="p-6 loading-content" id="mainContent">
+            <!-- بطاقات الإحصائيات الرئيسية المحسنة -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- إجمالي المبيعات -->
+                <div class="stat-card p-6 rounded-xl from-blue-500 to-blue-600 text-white fade-in">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-100 text-sm font-medium">إجمالي المبيعات اليوم</p>
+                            <p class="text-3xl font-bold mt-2" id="todaySales">0.00 د.ل</p>
+                            <p class="text-blue-100 text-sm mt-1" id="salesGrowth">
+                                <i class="fas fa-arrow-up mr-1"></i>
+                                جاري الحساب...
+                            </p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                            <i class="fas fa-chart-line text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- عدد الطلبات -->
+                <div class="stat-card p-6 rounded-xl from-green-500 to-green-600 text-white fade-in" style="animation-delay: 0.1s">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-green-100 text-sm font-medium">عدد الطلبات اليوم</p>
+                            <p class="text-3xl font-bold mt-2" id="todayOrders">0</p>
+                            <p class="text-green-100 text-sm mt-1" id="ordersGrowth">
+                                <i class="fas fa-arrow-up mr-1"></i>
+                                جاري الحساب...
+                            </p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                            <i class="fas fa-shopping-cart text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- إجمالي المنتجات -->
+                <div class="stat-card p-6 rounded-xl from-purple-500 to-purple-600 text-white fade-in" style="animation-delay: 0.2s">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-purple-100 text-sm font-medium">إجمالي المنتجات</p>
+                            <p class="text-3xl font-bold mt-2" id="totalProducts">0</p>
+                            <p class="text-purple-100 text-sm mt-1" id="lowStockAlert">
+                                <i class="fas fa-exclamation-triangle mr-1"></i>
+                                جاري التحميل...
+                            </p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                            <i class="fas fa-boxes text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- عدد العملاء -->
+                <div class="stat-card p-6 rounded-xl from-orange-500 to-orange-600 text-white fade-in" style="animation-delay: 0.3s">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-orange-100 text-sm font-medium">إجمالي العملاء</p>
+                            <p class="text-3xl font-bold mt-2" id="totalCustomers">0</p>
+                            <p class="text-orange-100 text-sm mt-1" id="newCustomers">
+                                <i class="fas fa-user-plus mr-1"></i>
+                                جاري التحميل...
+                            </p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                            <i class="fas fa-users text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ===================================
+                 الرسوم البيانية والتحليلات
+                 =================================== -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <!-- رسم بياني للمبيعات -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 slide-up">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">مبيعات الأسبوع الماضي</h3>
+                        <div class="flex space-x-2 space-x-reverse">
+                            <button id="weeklyChart" class="px-3 py-1 text-sm bg-primary-100 text-primary-700 rounded-lg">أسبوعي</button>
+                            <button id="monthlyChart" class="px-3 py-1 text-sm text-gray-500 hover:bg-gray-100 rounded-lg">شهري</button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- رسم بياني للفئات الأكثر مبيعاً -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 slide-up" style="animation-delay: 0.2s">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">الفئات الأكثر مبيعاً</h3>
+                        <button class="text-primary-600 hover:text-primary-700 text-sm" onclick="window.location.href='#products'">عرض التفاصيل</button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="categoriesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ===================================
+                 الجداول والقوائم التفاعلية
+                 =================================== -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- المعاملات الأخيرة -->
+                <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm slide-up">
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">الفواتير الأخيرة</h3>
+                            <a href="#invoices" class="text-primary-600 hover:text-primary-700 text-sm">عرض الكل</a>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-700">
+                                <tr>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">رقم الفاتورة</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">العميل</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">المبلغ</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">الحالة</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">التاريخ</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700" id="invoicesTableBody">
+                                <tr>
+                                    <td colspan="5" class="px-6 py-4 text-center text-gray-500">
+                                        <div class="loading-spinner mx-auto"></div>
+                                        <p class="mt-2">جاري تحميل البيانات...</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- الإجراءات السريعة والتنبيهات -->
+                <div class="space-y-6">
+                    <!-- الإجراءات السريعة -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 slide-up" style="animation-delay: 0.4s">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">إجراءات سريعة</h3>
+                        <div class="space-y-3">
+                            <button onclick="window.location.href='#products'" class="quick-action-btn w-full flex items-center space-x-3 space-x-reverse p-3 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-900/30 smooth-transition">
+                                <i class="fas fa-plus w-5"></i>
+                                <span>إضافة منتج جديد</span>
+                            </button>
+                            <button onclick="window.location.href='#invoices'" class="quick-action-btn w-full flex items-center space-x-3 space-x-reverse p-3 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 smooth-transition">
+                                <i class="fas fa-file-invoice w-5"></i>
+                                <span>إنشاء فاتورة</span>
+                            </button>
+                            <button onclick="window.location.href='#customers'" class="quick-action-btn w-full flex items-center space-x-3 space-x-reverse p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 smooth-transition">
+                                <i class="fas fa-user-plus w-5"></i>
+                                <span>إضافة عميل</span>
+                            </button>
+                            <button onclick="window.location.href='#reports'" class="quick-action-btn w-full flex items-center space-x-3 space-x-reverse p-3 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400 rounded-lg hover:bg-orange-100 dark:hover:bg-orange-900/30 smooth-transition">
+                                <i class="fas fa-chart-bar w-5"></i>
+                                <span>عرض التقارير</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- المنتجات منخفضة المخزون -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 slide-up" style="animation-delay: 0.6s">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">تنبيهات المخزون</h3>
+                            <span id="lowStockCount" class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full hidden">0</span>
+                        </div>
+                        <div class="space-y-3" id="lowStockProducts">
+                            <div class="text-center text-gray-500 py-4">
+                                <div class="loading-spinner mx-auto mb-2"></div>
+                                <p>جاري تحميل تنبيهات المخزون...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- ===================================
+         نافذة الإشعارات المنبثقة
+         =================================== -->
+    <div id="notificationsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-start justify-center pt-16">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-md w-full mx-4 max-h-96 overflow-hidden">
+            <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white">الإشعارات</h3>
+                    <button id="closeNotifications" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4 space-y-3 overflow-y-auto custom-scrollbar" style="max-height: 300px;" id="notificationsList">
+                <div class="text-center text-gray-500 py-4">
+                    <p>لا توجد إشعارات جديدة</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ===================================
+         مؤشر التحميل العام
+         =================================== -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-8 flex flex-col items-center space-y-4">
+            <div class="loading-spinner"></div>
+            <p class="text-gray-600 dark:text-gray-300">جاري التحميل...</p>
+        </div>
+    </div>
+    
+    <!-- ===================================
+         نظام الإشعارات التفاعلية
+         =================================== -->
+    <div id="toastContainer" class="fixed top-4 left-4 z-50 space-y-2"></div>
+    
+    <!-- ===================================
+         JavaScript للوظائف التفاعلية والربط مع APIs
+         =================================== -->
+    <script>
+        // ===================================
+        // إعدادات API والمصادقة
+        // ===================================
+        
+        const API_BASE_URL = 'http://localhost:5000/api'; // تعديل حسب عنوان الخادم
+        
+        // دالة للحصول على التوكن من localStorage
+        function getToken() {
+            return localStorage.getItem('token');
+        }
+        
+        // دالة للتحقق من صحة الجلسة
+        async function checkAuth() {
+            const token = getToken();
+            if (!token) {
+                window.location.href = '/login.html';
+                return false;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/users/me`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Authentication failed');
+                }
+                
+                const userData = await response.json();
+                if (userData.success) {
+                    // حفظ بيانات المستخدم
+                    localStorage.setItem('userData', JSON.stringify(userData.data));
+                    updateUserInfo(userData.data);
+                    return userData.data;
+                } else {
+                    throw new Error('Invalid user data');
+                }
+            } catch (error) {
+                console.error('Authentication error:', error);
+                localStorage.removeItem('token');
+                localStorage.removeItem('userData');
+                window.location.href = '/login.html';
+                return false;
+            }
+        }
+        
+        // دالة مساعدة لإجراء طلبات API
+        async function apiRequest(endpoint, options = {}) {
+            const token = getToken();
+            
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                    ...options.headers
+                },
+                ...options
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
+                
+                // التحقق من حالة المصادقة
+                if (response.status === 401) {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('userData');
+                    window.location.href = '/login.html';
+                    return null;
+                }
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || `HTTP error! status: ${response.status}`);
+                }
+                
+                return data;
+            } catch (error) {
+                console.error('API Request Error:', error);
+                showToast(`خطأ في الطلب: ${error.message}`, 'error');
+                throw error;
+            }
+        }
+        
+        // تحديث معلومات المستخدم في الواجهة
+        function updateUserInfo(userData) {
+            const userNameElement = document.getElementById('userName');
+            const userRoleElement = document.getElementById('userRole');
+            const userInitialElement = document.getElementById('userInitial');
+            const shopWelcomeElement = document.getElementById('shopWelcome');
+            
+            if (userNameElement) userNameElement.textContent = userData.name;
+            if (userRoleElement) {
+                const roleText = {
+                    'owner': 'مالك المحل',
+                    'manager': 'مدير',
+                    'employee': 'موظف'
+                }[userData.role] || userData.role;
+                userRoleElement.textContent = roleText;
+            }
+            if (userInitialElement) {
+                userInitialElement.textContent = userData.name.charAt(0);
+            }
+            if (shopWelcomeElement && userData.shop) {
+                shopWelcomeElement.textContent = `نظرة عامة على أداء ${userData.shop.name || 'محلك'}`;
+            }
+        }
+        
+        // ===================================
+        // دوال جلب البيانات من APIs
+        // ===================================
+        
+        // جلب إحصائيات المبيعات
+        async function fetchSalesStats() {
+            try {
+                const today = new Date();
+                const yesterday = new Date(today);
+                yesterday.setDate(yesterday.getDate() - 1);
+                
+                const todayStr = today.toISOString().split('T')[0];
+                const yesterdayStr = yesterday.toISOString().split('T')[0];
+                
+                // جلب إحصائيات المعاملات
+                const statsResponse = await apiRequest('/transactions/stats');
+                const transactionsResponse = await apiRequest(`/transactions?startDate=${todayStr}&endDate=${todayStr}`);
+                
+                if (statsResponse && transactionsResponse) {
+                    const todaySales = transactionsResponse.data ? 
+                        transactionsResponse.data
+                            .filter(t => t.type === 'income')
+                            .reduce((sum, t) => sum + t.amount, 0) : 0;
+                    
+                    const todayOrders = transactionsResponse.data ? 
+                        transactionsResponse.data.filter(t => t.type === 'income').length : 0;
+                    
+                    // تحديث العناصر في الواجهة
+                    document.getElementById('todaySales').textContent = `${todaySales.toFixed(2)} د.ل`;
+                    document.getElementById('todayOrders').textContent = todayOrders.toString();
+                    
+                    // حساب نسب النمو (محاكاة)
+                    const salesGrowth = Math.random() * 20 - 5; // نسبة عشوائية بين -5% و 15%
+                    const ordersGrowth = Math.random() * 15;
+                    
+                    document.getElementById('salesGrowth').innerHTML = `
+                        <i class="fas fa-arrow-${salesGrowth >= 0 ? 'up' : 'down'} mr-1"></i>
+                        ${salesGrowth >= 0 ? '+' : ''}${salesGrowth.toFixed(1)}% من الأمس
+                    `;
+                    
+                    document.getElementById('ordersGrowth').innerHTML = `
+                        <i class="fas fa-arrow-up mr-1"></i>
+                        +${ordersGrowth.toFixed(1)}% من الأمس
+                    `;
+                }
+            } catch (error) {
+                console.error('Error fetching sales stats:', error);
+            }
+        }
+        
+        // جلب إحصائيات المنتجات
+        async function fetchProductsStats() {
+            try {
+                const productsResponse = await apiRequest('/products');
+                
+                if (productsResponse && productsResponse.data) {
+                    const products = productsResponse.data;
+                    const totalProducts = products.length;
+                    const lowStockProducts = products.filter(p => p.stockQuantity <= 10);
+                    
+                    document.getElementById('totalProducts').textContent = totalProducts.toString();
+                    document.getElementById('lowStockAlert').innerHTML = `
+                        <i class="fas fa-exclamation-triangle mr-1"></i>
+                        ${lowStockProducts.length} منتج نفد مخزونه
+                    `;
+                    
+                    // تحديث قائمة المنتجات منخفضة المخزون
+                    updateLowStockProducts(lowStockProducts);
+                }
+            } catch (error) {
+                console.error('Error fetching products stats:', error);
+            }
+        }
+        
+        // جلب إحصائيات العملاء
+        async function fetchCustomersStats() {
+            try {
+                const customersResponse = await apiRequest('/customers');
+                
+                if (customersResponse && customersResponse.data) {
+                    const customers = customersResponse.data;
+                    const totalCustomers = customers.length;
+                    
+                    // حساب العملاء الجدد في الأسبوع الماضي
+                    const oneWeekAgo = new Date();
+                    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+                    
+                    const newCustomers = customers.filter(c => 
+                        new Date(c.createdAt) >= oneWeekAgo
+                    ).length;
+                    
+                    document.getElementById('totalCustomers').textContent = totalCustomers.toString();
+                    document.getElementById('newCustomers').innerHTML = `
+                        <i class="fas fa-user-plus mr-1"></i>
+                        ${newCustomers} عملاء جدد هذا الأسبوع
+                    `;
+                }
+            } catch (error) {
+                console.error('Error fetching customers stats:', error);
+            }
+        }
+        
+        // جلب الفواتير الأخيرة
+        async function fetchRecentInvoices() {
+            try {
+                const invoicesResponse = await apiRequest('/invoices?limit=5');
+                
+                if (invoicesResponse && invoicesResponse.data) {
+                    const invoices = invoicesResponse.data.slice(0, 5);
+                    updateInvoicesTable(invoices);
+                }
+            } catch (error) {
+                console.error('Error fetching recent invoices:', error);
+                updateInvoicesTable([]);
+            }
+        }
+        
+        // تحديث قائمة المنتجات منخفضة المخزون
+        function updateLowStockProducts(products) {
+            const container = document.getElementById('lowStockProducts');
+            const countElement = document.getElementById('lowStockCount');
+            
+            if (products.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center text-green-600 py-4">
+                        <i class="fas fa-check-circle text-2xl mb-2"></i>
+                        <p>جميع المنتجات متوفرة في المخزون</p>
+                    </div>
+                `;
+                countElement.classList.add('hidden');
+            } else {
+                container.innerHTML = products.map(product => `
+                    <div class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                        <div>
+                            <p class="text-sm font-medium text-gray-800 dark:text-white">${product.name}</p>
+                            <p class="text-xs text-red-600 dark:text-red-400">متبقي: ${product.stockQuantity} ${product.unit || 'قطعة'}</p>
+                        </div>
+                        <i class="fas fa-exclamation-triangle text-red-500"></i>
+                    </div>
+                `).join('');
+                
+                countElement.textContent = products.length;
+                countElement.classList.remove('hidden');
+            }
+        }
+        
+        // تحديث جدول الفواتير
+        function updateInvoicesTable(invoices) {
+            const tbody = document.getElementById('invoicesTableBody');
+            
+            if (invoices.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="px-6 py-4 text-center text-gray-500">
+                            لا توجد فواتير متاحة
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tbody.innerHTML = invoices.map(invoice => {
+                const statusClass = {
+                    'paid': 'bg-green-100 text-green-800',
+                    'partially_paid': 'bg-yellow-100 text-yellow-800',
+                    'pending': 'bg-blue-100 text-blue-800',
+                    'cancelled': 'bg-red-100 text-red-800'
+                }[invoice.status] || 'bg-gray-100 text-gray-800';
+                
+                const statusText = {
+                    'paid': 'مدفوعة',
+                    'partially_paid': 'مدفوعة جزئياً',
+                    'pending': 'معلقة',
+                    'cancelled': 'ملغية'
+                }[invoice.status] || invoice.status;
+                
+                const customerName = invoice.customer?.name || 'غير محدد';
+                const invoiceDate = new Date(invoice.date || invoice.createdAt).toLocaleDateString('ar-LY');
+                
+                return `
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">${invoice.invoiceNumber}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">${customerName}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white font-medium">${invoice.totalAmount.toFixed(2)} د.ل</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${statusClass}">
+                                ${statusText}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">${invoiceDate}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        // ===================================
+        // إعدادات الوضع المظلم والفاتح
+        // ===================================
+        
+        // تحديد نظام الألوان المفضل للمستخدم
+        function initializeDarkMode() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true' || 
+                (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+            }
+        }
+        
+        // تبديل الوضع المظلم/الفاتح
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('darkMode', isDark);
+        });
+        
+        // مراقبة تغيير تفضيلات النظام
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (!localStorage.getItem('darkMode')) {
+                if (event.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+        
+        // ===================================
+        // إعدادات القائمة الجانبية المتجاوبة
+        // ===================================
+        
+        function initializeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            const toggleBtn = document.getElementById('toggleSidebar');
+            
+            // إخفاء/إظهار القائمة الجانبية على الأجهزة المحمولة
+            function toggleSidebar() {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.toggle('translate-x-full');
+                } else {
+                    const isHidden = sidebar.classList.contains('-translate-x-full');
+                    sidebar.classList.toggle('-translate-x-full');
+                    mainContent.classList.toggle('mr-0');
+                    mainContent.classList.toggle('mr-64');
+                }
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', toggleSidebar);
+            }
+            
+            // إعدادات استجابة الشاشة
+            function handleResize() {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('translate-x-full');
+                    mainContent.classList.remove('mr-64');
+                    mainContent.classList.add('mr-0');
+                } else {
+                    sidebar.classList.remove('translate-x-full');
+                    mainContent.classList.add('mr-64');
+                    mainContent.classList.remove('mr-0');
+                }
+            }
+            
+            window.addEventListener('resize', handleResize);
+            handleResize(); // تطبيق الإعدادات الأولية
+        }
+        
+        // ===================================
+        // الرسوم البيانية التفاعلية
+        // ===================================
+        
+        let salesChart, categoriesChart;
+        
+        async function initializeCharts() {
+            try {
+                // رسم بياني للمبيعات الأسبوعية
+                await initializeSalesChart();
+                
+                // رسم بياني دائري للفئات
+                await initializeCategoriesChart();
+            } catch (error) {
+                console.error('Error initializing charts:', error);
+            }
+        }
+        
+        async function initializeSalesChart() {
+            try {
+                // جلب بيانات المبيعات للأسبوع الماضي
+                const endDate = new Date();
+                const startDate = new Date();
+                startDate.setDate(endDate.getDate() - 7);
+                
+                const transactionsResponse = await apiRequest(
+                    `/transactions?startDate=${startDate.toISOString().split('T')[0]}&endDate=${endDate.toISOString().split('T')[0]}&type=income`
+                );
+                
+                // معالجة البيانات لإنشاء الرسم البياني
+                const salesData = Array(7).fill(0);
+                const labels = ['السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'];
+                
+                if (transactionsResponse && transactionsResponse.data) {
+                    transactionsResponse.data.forEach(transaction => {
+                        const transactionDate = new Date(transaction.date);
+                        const dayIndex = transactionDate.getDay();
+                        salesData[dayIndex] += transaction.amount;
+                    });
+                }
+                
+                const salesCtx = document.getElementById('salesChart').getContext('2d');
+                salesChart = new Chart(salesCtx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'المبيعات (د.ل)',
+                            data: salesData,
+                            borderColor: '#5D5CDE',
+                            backgroundColor: 'rgba(93, 92, 222, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value.toLocaleString('ar-LY') + ' د.ل';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error initializing sales chart:', error);
+            }
+        }
+        
+        async function initializeCategoriesChart() {
+            try {
+                // جلب بيانات المنتجات لحساب الفئات
+                const productsResponse = await apiRequest('/products');
+                
+                const categoryData = {};
+                const defaultCategories = ['الإلكترونيات', 'الملابس', 'الطعام', 'المنزل', 'أخرى'];
+                
+                if (productsResponse && productsResponse.data) {
+                    productsResponse.data.forEach(product => {
+                        const category = product.category || 'أخرى';
+                        categoryData[category] = (categoryData[category] || 0) + 1;
+                    });
+                }
+                
+                // إعداد البيانات للرسم البياني
+                const labels = Object.keys(categoryData).length > 0 ? Object.keys(categoryData) : defaultCategories;
+                const data = labels.map(label => categoryData[label] || 0);
+                
+                const categoriesCtx = document.getElementById('categoriesChart').getContext('2d');
+                categoriesChart = new Chart(categoriesCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: data,
+                            backgroundColor: [
+                                '#5D5CDE',
+                                '#10B981',
+                                '#F59E0B',
+                                '#EF4444',
+                                '#8B5CF6'
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error initializing categories chart:', error);
+            }
+        }
+        
+        // ===================================
+        // نظام الإشعارات التفاعلية
+        // ===================================
+        
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            const bgColor = {
+                'success': 'bg-green-500',
+                'error': 'bg-red-500',
+                'warning': 'bg-yellow-500',
+                'info': 'bg-blue-500'
+            }[type];
+            
+            toast.className = `${bgColor} text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300`;
+            toast.innerHTML = `
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <i class="fas fa-info-circle"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            const container = document.getElementById('toastContainer');
+            container.appendChild(toast);
+            
+            // إظهار الإشعار
+            setTimeout(() => {
+                toast.classList.remove('translate-x-full');
+            }, 100);
+            
+            // إخفاء الإشعار تلقائياً
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => {
+                    container.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+        
+        // ===================================
+        // دوال تحميل البيانات الرئيسية
+        // ===================================
+        
+        async function loadDashboardData() {
+            try {
+                showLoadingOverlay(true);
+                
+                // تحميل جميع البيانات بشكل متوازي
+                await Promise.all([
+                    fetchSalesStats(),
+                    fetchProductsStats(),
+                    fetchCustomersStats(),
+                    fetchRecentInvoices()
+                ]);
+                
+                // إخفاء مؤشر التحميل وإظهار المحتوى
+                showLoadingOverlay(false);
+                document.getElementById('mainContent').classList.add('content-loaded');
+                
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+                showToast('حدث خطأ في تحميل بيانات لوحة التحكم', 'error');
+                showLoadingOverlay(false);
+            }
+        }
+        
+        function showLoadingOverlay(show) {
+            const overlay = document.getElementById('loadingOverlay');
+            if (show) {
+                overlay.classList.remove('hidden');
+            } else {
+                overlay.classList.add('hidden');
+            }
+        }
+        
+        // ===================================
+        // معالجات الأحداث
+        // ===================================
+        
+        // إدارة نافذة الإشعارات
+        document.getElementById('notificationsBtn').addEventListener('click', function() {
+            document.getElementById('notificationsModal').classList.remove('hidden');
+        });
+        
+        document.getElementById('closeNotifications').addEventListener('click', function() {
+            document.getElementById('notificationsModal').classList.add('hidden');
+        });
+        
+        // إغلاق النافذة عند النقر خارجها
+        document.getElementById('notificationsModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+            }
+        });
+        
+        // معالج تسجيل الخروج
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userData');
+                showToast('تم تسجيل الخروج بنجاح', 'success');
+                setTimeout(() => {
+                    window.location.href = '/login.html';
+                }, 1000);
+            }
+        });
+        
+        // معالج تحديث الرسوم البيانية
+        document.getElementById('weeklyChart').addEventListener('click', function() {
+            // تفعيل الزر الأسبوعي
+            this.className = 'px-3 py-1 text-sm bg-primary-100 text-primary-700 rounded-lg';
+            document.getElementById('monthlyChart').className = 'px-3 py-1 text-sm text-gray-500 hover:bg-gray-100 rounded-lg';
+            
+            // إعادة تحميل الرسم البياني الأسبوعي
+            if (salesChart) {
+                salesChart.destroy();
+            }
+            initializeSalesChart();
+        });
+        
+        document.getElementById('monthlyChart').addEventListener('click', function() {
+            // تفعيل الزر الشهري
+            this.className = 'px-3 py-1 text-sm bg-primary-100 text-primary-700 rounded-lg';
+            document.getElementById('weeklyChart').className = 'px-3 py-1 text-sm text-gray-500 hover:bg-gray-100 rounded-lg';
+            
+            showToast('سيتم إضافة العرض الشهري قريباً', 'info');
+        });
+        
+        // ===================================
+        // تحسين الأداء والتحميل
+        // ===================================
+        
+        // كسل التحميل للمحتوى غير المرئي
+        function initializeLazyLoading() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.slide-up, .fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // تحسين الأداء للأجهزة الضعيفة
+        function optimizePerformance() {
+            if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+                document.body.classList.add('low-performance');
+            }
+            
+            // تحسين تحميل الخطوط
+            if ('fonts' in document) {
+                document.fonts.ready.then(() => {
+                    document.body.classList.add('fonts-loaded');
+                });
+            }
+        }
+        
+        // تحديث البيانات في الوقت الفعلي
+        function startRealTimeUpdates() {
+            // تحديث البيانات كل 5 دقائق
+            setInterval(async () => {
+                try {
+                    await fetchSalesStats();
+                    await fetchRecentInvoices();
+                } catch (error) {
+                    console.error('Error in real-time update:', error);
+                }
+            }, 300000); // 5 دقائق
+        }
+        
+        // ===================================
+        // تهيئة التطبيق عند تحميل الصفحة
+        // ===================================
+        
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                // تهيئة الوضع المظلم
+                initializeDarkMode();
+                
+                // تهيئة القائمة الجانبية
+                initializeSidebar();
+                
+                // التحقق من المصادقة
+                const userData = await checkAuth();
+                if (!userData) return;
+                
+                // تحميل بيانات لوحة التحكم
+                await loadDashboardData();
+                
+                // تهيئة الرسوم البيانية
+                await initializeCharts();
+                
+                // تحسين الأداء
+                optimizePerformance();
+                initializeLazyLoading();
+                
+                // بدء التحديثات في الوقت الفعلي
+                startRealTimeUpdates();
+                
+                // إظهار رسالة ترحيب
+                setTimeout(() => {
+                    showToast(`مرحباً ${userData.name}! تم تحميل لوحة التحكم بنجاح`, 'success');
+                }, 1000);
+                
+                console.log('تم تحميل لوحة التحكم بنجاح مع البيانات الحقيقية');
+                
+            } catch (error) {
+                console.error('Error initializing dashboard:', error);
+                showToast('حدث خطأ في تحميل لوحة التحكم', 'error');
+            }
+        });
+        
+        // معالج الأخطاء العام
+        window.addEventListener('error', function(e) {
+            console.error('خطأ في التطبيق:', e.error);
+            showToast('حدث خطأ غير متوقع. يرجى إعادة تحميل الصفحة.', 'error');
+        });
+        
+        // حفظ حالة التطبيق قبل إغلاق الصفحة
+        window.addEventListener('beforeunload', function() {
+            localStorage.setItem('lastVisit', new Date().toISOString());
+        });
+        
+        // معالج الاتصال بالإنترنت
+        window.addEventListener('online', function() {
+            showToast('تم استعادة الاتصال بالإنترنت', 'success');
+            loadDashboardData();
+        });
+        
+        window.addEventListener('offline', function() {
+            showToast('تم فقدان الاتصال بالإنترنت', 'warning');
+        });
+    </script>
+</body>
+</html>

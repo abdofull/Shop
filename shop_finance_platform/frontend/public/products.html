@@ -1,0 +1,1956 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- ===================================
+         إعدادات الرأس الأساسية وتحسين SEO
+         =================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="إدارة المنتجات الشاملة في منصة إدارة المحلات التجارية - نظام متكامل لإدارة المخزون والمنتجات">
+    <meta name="keywords" content="إدارة المنتجات, مخزون, منتجات, محلات تجارية, ليبيا, نظام إدارة">
+    <meta name="author" content="منصة إدارة المحلات الليبية">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- تحسين SEO -->
+    <title>إدارة المنتجات | منصة إدارة المحلات الليبية</title>
+    <meta property="og:title" content="إدارة المنتجات - منصة إدارة المحلات الليبية">
+    <meta property="og:description" content="نظام شامل لإدارة المنتجات وتتبع المخزون مع أدوات متقدمة للمتابعة والتحكم">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_LY">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- تحسين الأداء -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    
+    <!-- الخطوط العربية المحسنة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS للتصميم المتجاوب -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Axios للتعامل مع API -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+    <!-- تخصيص Tailwind CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            500: '#5D5CDE',
+                            600: '#4c46c7',
+                            700: '#3b359e',
+                            800: '#2a2575',
+                            900: '#1a164c'
+                        }
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
+    
+    <!-- أنماط CSS مخصصة -->
+    <style>
+        /* تحسين الخطوط والنصوص العربية */
+        body {
+            font-family: 'Cairo', sans-serif;
+            font-feature-settings: 'liga' 1, 'kern' 1;
+        }
+        
+        /* تحسين الحركات والانتقالات */
+        .smooth-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* تحسين شريط التمرير */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #5D5CDE;
+            border-radius: 3px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #4c46c7;
+        }
+        
+        /* تحسين الرسوم المتحركة */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* تحسين الاستجابة للأجهزة المحمولة */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            
+            .mobile-menu.open {
+                transform: translateX(0);
+            }
+            
+            .table-container {
+                overflow-x: auto;
+            }
+            
+            .mobile-card {
+                display: block;
+            }
+            
+            .desktop-table {
+                display: none;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-card {
+                display: none;
+            }
+            
+            .desktop-table {
+                display: table;
+            }
+        }
+        
+        /* تحسين الوضع المظلم */
+        .dark .bg-white {
+            background-color: #1f2937 !important;
+        }
+        
+        .dark .text-gray-800 {
+            color: #f9fafb !important;
+        }
+        
+        .dark .text-gray-600 {
+            color: #d1d5db !important;
+        }
+        
+        .dark .border-gray-200 {
+            border-color: #374151 !important;
+        }
+        
+        /* مؤشر التحميل المحسن */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #5D5CDE;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* تحسين نماذج الإدخال */
+        .form-control:focus {
+            border-color: #5D5CDE;
+            box-shadow: 0 0 0 0.2rem rgba(93, 92, 222, 0.25);
+        }
+        
+        /* تحسين الأزرار */
+        .btn-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .8;
+            }
+        }
+        
+        /* تحسين البطاقات */
+        .product-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* تحسين الجداول */
+        .table-row:hover {
+            background-color: rgba(93, 92, 222, 0.05);
+        }
+        
+        /* تحسين النماذج المنبثقة */
+        .modal-backdrop {
+            backdrop-filter: blur(5px);
+        }
+        
+        /* مؤشرات المخزون */
+        .stock-indicator {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stock-indicator::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ef4444 0%, #f59e0b 50%, #10b981 100%);
+        }
+        
+        .stock-low::after {
+            background: #ef4444;
+        }
+        
+        .stock-medium::after {
+            background: #f59e0b;
+        }
+        
+        .stock-high::after {
+            background: #10b981;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 font-cairo smooth-transition">
+    <!-- ===================================
+         القائمة الجانبية المتطورة
+         =================================== -->
+    <div id="sidebar" class="fixed right-0 top-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl transform translate-x-0 transition-transform duration-300 ease-in-out z-50 custom-scrollbar overflow-y-auto">
+        <!-- رأس القائمة الجانبية -->
+        <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-store text-white text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-gray-800 dark:text-white">منصة المحلات</h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">إدارة متكاملة</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- عناصر القائمة الجانبية -->
+        <nav class="p-4">
+            <div class="space-y-2">
+                <!-- لوحة التحكم -->
+                <a href="/dashboard.html" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-tachometer-alt w-5"></i>
+                    <span class="font-medium">لوحة التحكم</span>
+                </a>
+                
+                <!-- المبيعات -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">المبيعات</h3>
+                    <a href="#sales" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-cash-register w-5"></i>
+                        <span>نقاط البيع</span>
+                    </a>
+                    <a href="#invoices" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-file-invoice-dollar w-5"></i>
+                        <span>الفواتير</span>
+                    </a>
+                    <a href="#customers" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-user-friends w-5"></i>
+                        <span>العملاء</span>
+                    </a>
+                </div>
+                
+                <!-- المخزون -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">المخزون</h3>
+                    <a href="#products" class="sidebar-item active flex items-center space-x-3 space-x-reverse p-3 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400">
+                        <i class="fas fa-boxes w-5"></i>
+                        <span>المنتجات</span>
+                    </a>
+                    <a href="#categories" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-tags w-5"></i>
+                        <span>الفئات</span>
+                    </a>
+                    <a href="#suppliers" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-truck w-5"></i>
+                        <span>الموردين</span>
+                    </a>
+                </div>
+                
+                <!-- الموارد البشرية -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">الموارد البشرية</h3>
+                    <a href="#employees" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-user-tie w-5"></i>
+                        <span>الموظفين</span>
+                    </a>
+                    <a href="#attendance" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-clock w-5"></i>
+                        <span>الحضور والانصراف</span>
+                    </a>
+                </div>
+                
+                <!-- التقارير والتحليلات -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">التقارير</h3>
+                    <a href="#reports" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-chart-line w-5"></i>
+                        <span>التقارير المالية</span>
+                    </a>
+                    <a href="#analytics" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-analytics w-5"></i>
+                        <span>التحليلات</span>
+                    </a>
+                </div>
+                
+                <!-- الإعدادات -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">الإعدادات</h3>
+                    <a href="#settings" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-cog w-5"></i>
+                        <span>إعدادات النظام</span>
+                    </a>
+                    <a href="#profile" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-user-circle w-5"></i>
+                        <span>الملف الشخصي</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <!-- ===================================
+         الطبقة العلوية للمحتوى الرئيسي
+         =================================== -->
+    <div id="main-content" class="mr-64 transition-all duration-300">
+        <!-- الشريط العلوي المحسن -->
+        <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
+            <div class="px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- الجانب الأيمن - العنوان والبحث -->
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <!-- زر إخفاء القائمة الجانبية -->
+                        <button id="toggleSidebar" class="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-bars text-lg"></i>
+                        </button>
+                        
+                        <!-- معلومات الصفحة -->
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-800 dark:text-white">إدارة المنتجات</h1>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">إدارة شاملة للمخزون والمنتجات</p>
+                        </div>
+                    </div>
+                    
+                    <!-- الجانب الأيسر - الإشعارات والإعدادات -->
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <!-- شريط البحث -->
+                        <div class="hidden md:block relative">
+                            <input type="search" 
+                                   id="headerSearchInput" 
+                                   placeholder="البحث عن منتج..." 
+                                   class="w-64 pr-10 pl-4 py-2 text-base bg-gray-100 dark:bg-gray-700 border-0 rounded-lg focus:ring-2 focus:ring-primary-500 dark:text-white">
+                            <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                        
+                        <!-- زر تبديل الوضع المظلم -->
+                        <button id="darkModeToggle" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400">
+                            <i class="fas fa-moon text-lg dark:hidden"></i>
+                            <i class="fas fa-sun text-lg hidden dark:inline"></i>
+                        </button>
+                        
+                        <!-- الإشعارات -->
+                        <div class="relative">
+                            <button id="notificationsBtn" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400 relative">
+                                <i class="fas fa-bell text-lg"></i>
+                                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                            </button>
+                        </div>
+                        
+                        <!-- معلومات المستخدم -->
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="hidden md:block text-right">
+                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">أحمد محمد</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">مدير المحل</p>
+                            </div>
+                            <div class="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
+                                <span class="text-white font-medium">أ</span>
+                            </div>
+                        </div>
+                        
+                        <!-- زر تسجيل الخروج -->
+                        <button id="logoutBtn" class="p-2 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20">
+                            <i class="fas fa-sign-out-alt text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- ===================================
+             المحتوى الرئيسي لصفحة المنتجات
+             =================================== -->
+        <main class="p-6">
+            <!-- إحصائيات المنتجات السريعة -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- إجمالي المنتجات -->
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-xl text-white fade-in">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-100 text-sm font-medium">إجمالي المنتجات</p>
+                            <p class="text-3xl font-bold mt-2" id="totalProducts">-</p>
+                            <p class="text-blue-100 text-sm mt-1">
+                                <i class="fas fa-boxes mr-1"></i>
+                                المنتجات النشطة
+                            </p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                            <i class="fas fa-boxes text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- المنتجات منخفضة المخزون -->
+                <div class="bg-gradient-to-r from-red-500 to-red-600 p-6 rounded-xl text-white fade-in" style="animation-delay: 0.1s">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-red-100 text-sm font-medium">منخفضة المخزون</p>
+                            <p class="text-3xl font-bold mt-2" id="lowStockProducts">-</p>
+                            <p class="text-red-100 text-sm mt-1">
+                                <i class="fas fa-exclamation-triangle mr-1"></i>
+                                تحتاج إعادة تموين
+                            </p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                            <i class="fas fa-exclamation-triangle text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- إجمالي قيمة المخزون -->
+                <div class="bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-xl text-white fade-in" style="animation-delay: 0.2s">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-green-100 text-sm font-medium">قيمة المخزون</p>
+                            <p class="text-3xl font-bold mt-2" id="totalStockValue">- د.ل</p>
+                            <p class="text-green-100 text-sm mt-1">
+                                <i class="fas fa-dollar-sign mr-1"></i>
+                                القيمة الإجمالية
+                            </p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                            <i class="fas fa-dollar-sign text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- عدد الفئات -->
+                <div class="bg-gradient-to-r from-purple-500 to-purple-600 p-6 rounded-xl text-white fade-in" style="animation-delay: 0.3s">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-purple-100 text-sm font-medium">عدد الفئات</p>
+                            <p class="text-3xl font-bold mt-2" id="totalCategories">-</p>
+                            <p class="text-purple-100 text-sm mt-1">
+                                <i class="fas fa-tags mr-1"></i>
+                                فئة المنتجات
+                            </p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                            <i class="fas fa-tags text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ===================================
+                 أدوات التحكم والفلاتر
+                 =================================== -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 mb-8 slide-up">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <!-- الجانب الأيمن - البحث والفلاتر -->
+                    <div class="flex flex-col md:flex-row gap-4 flex-1">
+                        <!-- مربع البحث الرئيسي -->
+                        <div class="relative flex-1">
+                            <input type="search" 
+                                   id="mainSearchInput" 
+                                   placeholder="البحث في المنتجات..." 
+                                   class="w-full pr-10 pl-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                            <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                        
+                        <!-- فلتر الفئة -->
+                        <select id="categoryFilter" class="px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                            <option value="">جميع الفئات</option>
+                            <!-- سيتم ملؤها من البيانات -->
+                        </select>
+                        
+                        <!-- فلتر حالة المخزون -->
+                        <select id="stockFilter" class="px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                            <option value="">جميع المخزون</option>
+                            <option value="available">متوفر</option>
+                            <option value="low">منخفض</option>
+                            <option value="out">نفد المخزون</option>
+                        </select>
+                        
+                        <!-- زر إعادة تعيين الفلاتر -->
+                        <button id="resetFiltersBtn" class="px-4 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                            <i class="fas fa-sync-alt mr-2"></i>
+                            إعادة تعيين
+                        </button>
+                    </div>
+                    
+                    <!-- الجانب الأيسر - أزرار الإجراءات -->
+                    <div class="flex gap-3">
+                        <button id="exportProductsBtn" class="px-4 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors">
+                            <i class="fas fa-file-export mr-2"></i>
+                            تصدير
+                        </button>
+                        <button id="addProductBtn" class="px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors btn-pulse">
+                            <i class="fas fa-plus mr-2"></i>
+                            إضافة منتج
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ===================================
+                 جدول المنتجات للشاشات الكبيرة
+                 =================================== -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm slide-up desktop-table" style="animation-delay: 0.2s">
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+                            <i class="fas fa-boxes mr-2"></i>
+                            قائمة المنتجات
+                        </h3>
+                        <span id="productsCount" class="text-sm text-gray-500 dark:text-gray-400">جاري التحميل...</span>
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 dark:bg-gray-700">
+                            <tr>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    المنتج
+                                </th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    الفئة
+                                </th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    السعر
+                                </th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    المخزون
+                                </th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    الوحدة
+                                </th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    الحالة
+                                </th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    الإجراءات
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                            <!-- سيتم ملؤها بواسطة JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center justify-between">
+                        <div class="text-sm text-gray-500 dark:text-gray-400" id="paginationInfo">
+                            عرض 1-10 من 50 منتج
+                        </div>
+                        <div class="flex space-x-2 space-x-reverse" id="paginationControls">
+                            <!-- سيتم ملؤها بواسطة JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ===================================
+                 عرض البطاقات للشاشات الصغيرة
+                 =================================== -->
+            <div id="productsCardsContainer" class="mobile-card space-y-4">
+                <!-- سيتم ملؤها بواسطة JavaScript -->
+            </div>
+        </main>
+    </div>
+    
+    <!-- ===================================
+         نافذة إضافة/تعديل منتج
+         =================================== -->
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-3xl w-full max-h-screen overflow-y-auto">
+            <!-- رأس النافذة -->
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                <h3 id="modalTitle" class="text-xl font-semibold text-gray-800 dark:text-white">إضافة منتج جديد</h3>
+                <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- محتوى النافذة -->
+            <div class="p-6">
+                <form id="productForm" class="space-y-6">
+                    <input type="hidden" id="productId">
+                    
+                    <!-- الصف الأول - الاسم والفئة -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="productName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-tag mr-2"></i>
+                                اسم المنتج *
+                            </label>
+                            <input type="text" 
+                                   id="productName" 
+                                   name="name" 
+                                   required 
+                                   class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                            <div id="productNameError" class="text-red-500 text-sm mt-1 hidden"></div>
+                        </div>
+                        
+                        <div>
+                            <label for="productCategory" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-folder mr-2"></i>
+                                الفئة *
+                            </label>
+                            <input type="text" 
+                                   id="productCategory" 
+                                   name="category" 
+                                   required 
+                                   class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                            <div id="productCategoryError" class="text-red-500 text-sm mt-1 hidden"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- الصف الثاني - السعر والتكلفة والكود -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label for="productPrice" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-dollar-sign mr-2"></i>
+                                سعر البيع *
+                            </label>
+                            <input type="number" 
+                                   id="productPrice" 
+                                   name="price" 
+                                   required 
+                                   min="0" 
+                                   step="0.01"
+                                   class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                            <div id="productPriceError" class="text-red-500 text-sm mt-1 hidden"></div>
+                        </div>
+                        
+                        <div>
+                            <label for="productCost" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-receipt mr-2"></i>
+                                تكلفة الشراء
+                            </label>
+                            <input type="number" 
+                                   id="productCost" 
+                                   name="cost" 
+                                   min="0" 
+                                   step="0.01"
+                                   class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                        </div>
+                        
+                        <div>
+                            <label for="productSku" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-barcode mr-2"></i>
+                                كود المنتج
+                            </label>
+                            <input type="text" 
+                                   id="productSku" 
+                                   name="sku" 
+                                   class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                        </div>
+                    </div>
+                    
+                    <!-- الصف الثالث - الكمية والوحدة -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="productStockQuantity" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-boxes mr-2"></i>
+                                كمية المخزون *
+                            </label>
+                            <input type="number" 
+                                   id="productStockQuantity" 
+                                   name="stockQuantity" 
+                                   required 
+                                   min="0"
+                                   class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                            <div id="productStockQuantityError" class="text-red-500 text-sm mt-1 hidden"></div>
+                        </div>
+                        
+                        <div>
+                            <label for="productUnit" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-balance-scale mr-2"></i>
+                                الوحدة *
+                            </label>
+                            <select id="productUnit" 
+                                    name="unit" 
+                                    required 
+                                    class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                                <option value="">اختر الوحدة</option>
+                                <option value="قطعة">قطعة</option>
+                                <option value="كيلو">كيلو</option>
+                                <option value="لتر">لتر</option>
+                                <option value="متر">متر</option>
+                                <option value="علبة">علبة</option>
+                                <option value="باكيت">باكيت</option>
+                                <option value="زجاجة">زجاجة</option>
+                                <option value="كيس">كيس</option>
+                            </select>
+                            <div id="productUnitError" class="text-red-500 text-sm mt-1 hidden"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- الوصف -->
+                    <div>
+                        <label for="productDescription" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            <i class="fas fa-align-left mr-2"></i>
+                            الوصف
+                        </label>
+                        <textarea id="productDescription" 
+                                  name="description" 
+                                  rows="3"
+                                  class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"></textarea>
+                    </div>
+                    
+                    <!-- أزرار الإجراءات -->
+                    <div class="flex justify-end space-x-3 space-x-reverse pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <button type="button" 
+                                id="cancelBtn" 
+                                class="px-6 py-3 border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <i class="fas fa-times mr-2"></i>
+                            إلغاء
+                        </button>
+                        <button type="submit" 
+                                id="saveBtn" 
+                                class="px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors">
+                            <i class="fas fa-save mr-2"></i>
+                            <span id="saveBtnText">حفظ المنتج</span>
+                            <i id="saveBtnSpinner" class="fas fa-spinner fa-spin mr-2 hidden"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ===================================
+         نافذة تأكيد الحذف
+         =================================== -->
+    <div id="deleteConfirmModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-md w-full">
+            <div class="p-6">
+                <div class="flex items-center space-x-4 space-x-reverse mb-4">
+                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-exclamation-triangle text-red-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">تأكيد الحذف</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">هذا الإجراء لا يمكن التراجع عنه</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 dark:text-gray-300 mb-6">
+                    هل أنت متأكد من حذف المنتج <strong id="deleteProductName"></strong>؟
+                    سيتم حذف جميع البيانات المرتبطة به.
+                </p>
+                
+                <div class="flex justify-end space-x-3 space-x-reverse">
+                    <button id="cancelDeleteBtn" class="px-4 py-2 border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                        إلغاء
+                    </button>
+                    <button id="confirmDeleteBtn" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors">
+                        <i class="fas fa-trash mr-2"></i>
+                        حذف المنتج
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ===================================
+         نافذة تحديث المخزون
+         =================================== -->
+    <div id="stockUpdateModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-md w-full">
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+                    <i class="fas fa-boxes mr-2"></i>
+                    تحديث المخزون
+                </h3>
+            </div>
+            
+            <div class="p-6">
+                <form id="stockUpdateForm">
+                    <input type="hidden" id="stockProductId">
+                    
+                    <div class="mb-4">
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">المنتج:</p>
+                        <p id="stockProductName" class="font-semibold text-gray-800 dark:text-white"></p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">المخزون الحالي: <span id="currentStock" class="font-medium"></span></p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="stockAction" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            نوع العملية *
+                        </label>
+                        <select id="stockAction" 
+                                name="action" 
+                                required 
+                                class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                            <option value="">اختر نوع العملية</option>
+                            <option value="add">إضافة مخزون</option>
+                            <option value="subtract">خصم مخزون</option>
+                            <option value="set">تعديل المخزون</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="stockQuantity" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            الكمية *
+                        </label>
+                        <input type="number" 
+                               id="stockQuantity" 
+                               name="quantity" 
+                               required 
+                               min="0"
+                               class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                    </div>
+                    
+                    <div class="flex justify-end space-x-3 space-x-reverse">
+                        <button type="button" id="cancelStockUpdateBtn" class="px-4 py-2 border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            إلغاء
+                        </button>
+                        <button type="submit" id="confirmStockUpdateBtn" class="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors">
+                            <i class="fas fa-save mr-2"></i>
+                            تحديث المخزون
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ===================================
+         مؤشر التحميل العام
+         =================================== -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-8 flex flex-col items-center space-y-4">
+            <div class="loading-spinner"></div>
+            <p class="text-gray-600 dark:text-gray-300">جاري التحميل...</p>
+        </div>
+    </div>
+    
+    <!-- ===================================
+         نظام الإشعارات التفاعلية
+         =================================== -->
+    <div id="toastContainer" class="fixed top-4 left-4 z-50 space-y-2"></div>
+    
+    <!-- ===================================
+         JavaScript للوظائف التفاعلية
+         =================================== -->
+    <script>
+        // ===================================
+        // إعدادات الأساسية والمتغيرات العامة
+        // ===================================
+        
+        // إعداد Axios
+        const API_BASE_URL = 'http://localhost:5000/api';
+        
+        // إعداد Axios مع التوكن
+        axios.defaults.baseURL = API_BASE_URL;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+        
+        // متغيرات عامة لإدارة البيانات
+        let products = [];
+        let filteredProducts = [];
+        let categories = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let isLoading = false;
+        let currentProductId = null;
+        
+        // ===================================
+        // إعدادات الوضع المظلم والفاتح
+        // ===================================
+        
+        function initializeDarkMode() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true' || 
+                (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+            }
+        }
+        
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('darkMode', isDark);
+        });
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (!localStorage.getItem('darkMode')) {
+                if (event.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+        
+        // ===================================
+        // إعدادات القائمة الجانبية المتجاوبة
+        // ===================================
+        
+        function initializeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            const toggleBtn = document.getElementById('toggleSidebar');
+            
+            function toggleSidebar() {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.toggle('translate-x-full');
+                } else {
+                    const isHidden = sidebar.classList.contains('-translate-x-full');
+                    sidebar.classList.toggle('-translate-x-full');
+                    mainContent.classList.toggle('mr-0');
+                    mainContent.classList.toggle('mr-64');
+                }
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', toggleSidebar);
+            }
+            
+            function handleResize() {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('translate-x-full');
+                    mainContent.classList.remove('mr-64');
+                    mainContent.classList.add('mr-0');
+                } else {
+                    sidebar.classList.remove('translate-x-full');
+                    mainContent.classList.add('mr-64');
+                    mainContent.classList.remove('mr-0');
+                }
+            }
+            
+            window.addEventListener('resize', handleResize);
+            handleResize();
+        }
+        
+        // ===================================
+        // نظام الإشعارات التفاعلية
+        // ===================================
+        
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            const bgColor = {
+                'success': 'bg-green-500',
+                'error': 'bg-red-500',
+                'warning': 'bg-yellow-500',
+                'info': 'bg-blue-500'
+            }[type];
+            
+            const icon = {
+                'success': 'fas fa-check-circle',
+                'error': 'fas fa-exclamation-circle',
+                'warning': 'fas fa-exclamation-triangle',
+                'info': 'fas fa-info-circle'
+            }[type];
+            
+            toast.className = `${bgColor} text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300`;
+            toast.innerHTML = `
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <i class="${icon}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            const container = document.getElementById('toastContainer');
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-x-full');
+            }, 100);
+            
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (container.contains(toast)) {
+                        container.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+        
+        // ===================================
+        // إدارة مؤشرات التحميل
+        // ===================================
+        
+        function showLoading() {
+            document.getElementById('loadingOverlay').classList.remove('hidden');
+        }
+        
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.add('hidden');
+        }
+        
+        function showButtonLoading(button) {
+            const spinner = button.querySelector('#saveBtnSpinner');
+            const text = button.querySelector('#saveBtnText');
+            if (spinner && text) {
+                spinner.classList.remove('hidden');
+                text.textContent = 'جاري الحفظ...';
+                button.disabled = true;
+            }
+        }
+        
+        function hideButtonLoading(button) {
+            const spinner = button.querySelector('#saveBtnSpinner');
+            const text = button.querySelector('#saveBtnText');
+            if (spinner && text) {
+                spinner.classList.add('hidden');
+                text.textContent = 'حفظ المنتج';
+                button.disabled = false;
+            }
+        }
+        
+        // ===================================
+        // دوال التعامل مع API
+        // ===================================
+        
+        /**
+         * جلب قائمة المنتجات من API
+         */
+        async function fetchProducts() {
+            try {
+                isLoading = true;
+                const response = await axios.get('/products');
+                products = response.data;
+                filteredProducts = [...products];
+                updateProductsDisplay();
+                updateStatistics();
+                updateCategoriesFilter();
+                showToast('تم تحديث قائمة المنتجات بنجاح', 'success');
+            } catch (error) {
+                console.error('خطأ في جلب المنتجات:', error);
+                showToast('فشل في تحميل قائمة المنتجات', 'error');
+            } finally {
+                isLoading = false;
+            }
+        }
+        
+        /**
+         * إضافة منتج جديد
+         */
+        async function createProduct(productData) {
+            try {
+                showLoading();
+                const response = await axios.post('/products', productData);
+                products.unshift(response.data);
+                filteredProducts = [...products];
+                updateProductsDisplay();
+                updateStatistics();
+                updateCategoriesFilter();
+                closeProductModal();
+                showToast('تم إضافة المنتج بنجاح', 'success');
+                return response.data;
+            } catch (error) {
+                console.error('خطأ في إضافة المنتج:', error);
+                showToast(error.response?.data?.message || 'فشل في إضافة المنتج', 'error');
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        /**
+         * تحديث بيانات منتج
+         */
+        async function updateProduct(productId, productData) {
+            try {
+                showLoading();
+                const response = await axios.put(`/products/${productId}`, productData);
+                const index = products.findIndex(prod => prod._id === productId);
+                if (index !== -1) {
+                    products[index] = response.data;
+                    filteredProducts = [...products];
+                    updateProductsDisplay();
+                    updateStatistics();
+                    updateCategoriesFilter();
+                }
+                closeProductModal();
+                showToast('تم تحديث بيانات المنتج بنجاح', 'success');
+                return response.data;
+            } catch (error) {
+                console.error('خطأ في تحديث المنتج:', error);
+                showToast(error.response?.data?.message || 'فشل في تحديث المنتج', 'error');
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        /**
+         * تحديث المخزون
+         */
+        async function updateStock(productId, stockData) {
+            try {
+                showLoading();
+                const response = await axios.patch(`/products/${productId}/stock`, stockData);
+                const index = products.findIndex(prod => prod._id === productId);
+                if (index !== -1) {
+                    products[index] = response.data;
+                    filteredProducts = [...products];
+                    updateProductsDisplay();
+                    updateStatistics();
+                }
+                closeStockUpdateModal();
+                showToast('تم تحديث المخزون بنجاح', 'success');
+                return response.data;
+            } catch (error) {
+                console.error('خطأ في تحديث المخزون:', error);
+                showToast(error.response?.data?.message || 'فشل في تحديث المخزون', 'error');
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        // ===================================
+        // دوال عرض البيانات
+        // ===================================
+        
+        /**
+         * تحديث إحصائيات المنتجات
+         */
+        function updateStatistics() {
+            const activeProducts = products.filter(prod => prod.isActive !== false);
+            const lowStockProducts = products.filter(prod => prod.stockQuantity <= 10);
+            
+            // حساب قيمة المخزون الإجمالية
+            const totalStockValue = products.reduce((total, product) => {
+                return total + (product.price * product.stockQuantity);
+            }, 0);
+            
+            // حساب عدد الفئات الفريدة
+            const uniqueCategories = [...new Set(products.map(prod => prod.category).filter(Boolean))];
+            
+            // تحديث العناصر في DOM
+            document.getElementById('totalProducts').textContent = activeProducts.length;
+            document.getElementById('lowStockProducts').textContent = lowStockProducts.length;
+            document.getElementById('totalCategories').textContent = uniqueCategories.length;
+            
+            document.getElementById('totalStockValue').textContent = totalStockValue.toLocaleString('ar-LY', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+        
+        /**
+         * تحديث فلتر الفئات
+         */
+        function updateCategoriesFilter() {
+            const categoryFilter = document.getElementById('categoryFilter');
+            const uniqueCategories = [...new Set(products.map(prod => prod.category).filter(Boolean))];
+            
+            // حفظ القيمة المحددة حالياً
+            const currentValue = categoryFilter.value;
+            
+            // إعادة ملء الخيارات
+            categoryFilter.innerHTML = '<option value="">جميع الفئات</option>';
+            uniqueCategories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilter.appendChild(option);
+            });
+            
+            // استعادة القيمة المحددة
+            categoryFilter.value = currentValue;
+        }
+        
+        /**
+         * تحديث عرض المنتجات
+         */
+        function updateProductsDisplay() {
+            updateDesktopTable();
+            updateMobileCards();
+            updatePagination();
+        }
+        
+        /**
+         * تحديث الجدول للشاشات الكبيرة
+         */
+        function updateDesktopTable() {
+            const tbody = document.getElementById('productsTableBody');
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageProducts = filteredProducts.slice(startIndex, endIndex);
+            
+            if (pageProducts.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
+                            <i class="fas fa-boxes text-4xl mb-4"></i>
+                            <div>لا توجد منتجات</div>
+                            <div class="text-sm mt-2">قم بإضافة منتج جديد للبدء</div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tbody.innerHTML = pageProducts.map(product => {
+                const statusBadge = product.isActive !== false 
+                    ? '<span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">نشط</span>'
+                    : '<span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">غير نشط</span>';
+                
+                // تحديد حالة المخزون
+                let stockClass = 'text-green-600';
+                let stockIcon = 'fas fa-check-circle';
+                if (product.stockQuantity === 0) {
+                    stockClass = 'text-red-600';
+                    stockIcon = 'fas fa-times-circle';
+                } else if (product.stockQuantity <= 10) {
+                    stockClass = 'text-yellow-600';
+                    stockIcon = 'fas fa-exclamation-triangle';
+                }
+                
+                return `
+                    <tr class="table-row hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <div class="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
+                                    <span class="text-white font-medium">
+                                        ${product.name?.charAt(0) || 'م'}
+                                    </span>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900 dark:text-white">
+                                        ${product.name || 'غير محدد'}
+                                    </div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">
+                                        ${product.sku ? `كود: ${product.sku}` : 'بدون كود'}
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+                                ${product.category || 'غير محدد'}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">
+                            ${product.price ? product.price.toLocaleString('ar-LY', {minimumFractionDigits: 2}) : '0.00'} د.ل
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center space-x-2 space-x-reverse">
+                                <i class="${stockIcon} ${stockClass}"></i>
+                                <span class="text-sm font-medium ${stockClass}">
+                                    ${product.stockQuantity || 0}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">
+                            ${product.unit || 'غير محدد'}
+                        </td>
+                        <td class="px-6 py-4">
+                            ${statusBadge}
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center space-x-2 space-x-reverse">
+                                <button onclick="editProduct('${product._id}')" 
+                                        class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300" 
+                                        title="تعديل">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button onclick="showStockUpdate('${product._id}')" 
+                                        class="text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300" 
+                                        title="تحديث المخزون">
+                                    <i class="fas fa-boxes"></i>
+                                </button>
+                                <button onclick="viewProduct('${product._id}')" 
+                                        class="text-purple-600 hover:text-purple-800 dark:text-purple-400 dark:hover:text-purple-300" 
+                                        title="عرض التفاصيل">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        /**
+         * تحديث البطاقات للشاشات الصغيرة
+         */
+        function updateMobileCards() {
+            const container = document.getElementById('productsCardsContainer');
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageProducts = filteredProducts.slice(startIndex, endIndex);
+            
+            if (pageProducts.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12">
+                        <i class="fas fa-boxes text-4xl text-gray-400 mb-4"></i>
+                        <div class="text-gray-500 dark:text-gray-400">لا توجد منتجات</div>
+                        <div class="text-sm text-gray-400 mt-2">قم بإضافة منتج جديد للبدء</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = pageProducts.map(product => {
+                const statusBadge = product.isActive !== false 
+                    ? '<span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">نشط</span>'
+                    : '<span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">غير نشط</span>';
+                
+                // تحديد حالة المخزون
+                let stockClass = 'text-green-600';
+                let stockIcon = 'fas fa-check-circle';
+                let stockText = 'متوفر';
+                if (product.stockQuantity === 0) {
+                    stockClass = 'text-red-600';
+                    stockIcon = 'fas fa-times-circle';
+                    stockText = 'نفد المخزون';
+                } else if (product.stockQuantity <= 10) {
+                    stockClass = 'text-yellow-600';
+                    stockIcon = 'fas fa-exclamation-triangle';
+                    stockText = 'منخفض';
+                }
+                
+                return `
+                    <div class="product-card bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <div class="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
+                                    <span class="text-white font-medium text-lg">
+                                        ${product.name?.charAt(0) || 'م'}
+                                    </span>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+                                        ${product.name || 'غير محدد'}
+                                    </h3>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                                        ${product.sku ? `كود: ${product.sku}` : 'بدون كود'}
+                                    </p>
+                                </div>
+                            </div>
+                            ${statusBadge}
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div class="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                <div class="text-lg font-bold text-gray-800 dark:text-white">
+                                    ${product.price ? product.price.toLocaleString('ar-LY', {minimumFractionDigits: 2}) : '0.00'}
+                                </div>
+                                <div class="text-xs text-gray-500">د.ل</div>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                                <div class="flex items-center justify-center space-x-1 space-x-reverse">
+                                    <i class="${stockIcon} ${stockClass}"></i>
+                                    <span class="font-bold ${stockClass}">
+                                        ${product.stockQuantity || 0}
+                                    </span>
+                                </div>
+                                <div class="text-xs text-gray-500">${product.unit || 'وحدة'}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-folder w-5 text-gray-400"></i>
+                                <span class="text-gray-600 dark:text-gray-300">${product.category || 'غير محدد'}</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-info-circle w-5 text-gray-400"></i>
+                                <span class="text-gray-600 dark:text-gray-300 ${stockClass}">${stockText}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between">
+                            <button onclick="editProduct('${product._id}')" 
+                                    class="flex items-center px-3 py-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors">
+                                <i class="fas fa-edit mr-2"></i>
+                                تعديل
+                            </button>
+                            <button onclick="showStockUpdate('${product._id}')" 
+                                    class="flex items-center px-3 py-2 text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 rounded-lg transition-colors">
+                                <i class="fas fa-boxes mr-2"></i>
+                                المخزون
+                            </button>
+                            <button onclick="viewProduct('${product._id}')" 
+                                    class="flex items-center px-3 py-2 text-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-colors">
+                                <i class="fas fa-eye mr-2"></i>
+                                عرض
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        /**
+         * تحديث عناصر التصفح (Pagination)
+         */
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+            const startItem = (currentPage - 1) * itemsPerPage + 1;
+            const endItem = Math.min(currentPage * itemsPerPage, filteredProducts.length);
+            
+            // تحديث معلومات التصفح
+            document.getElementById('paginationInfo').textContent = 
+                `عرض ${startItem}-${endItem} من ${filteredProducts.length} منتج`;
+            
+            document.getElementById('productsCount').textContent = 
+                `${filteredProducts.length} منتج`;
+            
+            // تحديث أزرار التصفح
+            const paginationControls = document.getElementById('paginationControls');
+            let paginationHTML = '';
+            
+            // زر السابق
+            if (currentPage > 1) {
+                paginationHTML += `
+                    <button onclick="changePage(${currentPage - 1})" 
+                            class="px-3 py-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                `;
+            }
+            
+            // أرقام الصفحات
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    paginationHTML += `
+                        <button class="px-3 py-2 bg-primary-500 text-white rounded-lg">
+                            ${i}
+                        </button>
+                    `;
+                } else {
+                    paginationHTML += `
+                        <button onclick="changePage(${i})" 
+                                class="px-3 py-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            ${i}
+                        </button>
+                    `;
+                }
+            }
+            
+            // زر التالي
+            if (currentPage < totalPages) {
+                paginationHTML += `
+                    <button onclick="changePage(${currentPage + 1})" 
+                            class="px-3 py-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                `;
+            }
+            
+            paginationControls.innerHTML = paginationHTML;
+        }
+        
+        // ===================================
+        // دوال البحث والفلترة
+        // ===================================
+        
+        /**
+         * تطبيق الفلاتر والبحث
+         */
+        function applyFilters() {
+            const searchTerm = document.getElementById('mainSearchInput').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const stockFilter = document.getElementById('stockFilter').value;
+            
+            filteredProducts = products.filter(product => {
+                // البحث النصي
+                const matchesSearch = !searchTerm || 
+                    product.name?.toLowerCase().includes(searchTerm) ||
+                    product.description?.toLowerCase().includes(searchTerm) ||
+                    product.sku?.toLowerCase().includes(searchTerm) ||
+                    product.category?.toLowerCase().includes(searchTerm);
+                
+                // فلتر الفئة
+                const matchesCategory = !categoryFilter || product.category === categoryFilter;
+                
+                // فلتر حالة المخزون
+                let matchesStock = true;
+                if (stockFilter === 'available') {
+                    matchesStock = product.stockQuantity > 10;
+                } else if (stockFilter === 'low') {
+                    matchesStock = product.stockQuantity > 0 && product.stockQuantity <= 10;
+                } else if (stockFilter === 'out') {
+                    matchesStock = product.stockQuantity === 0;
+                }
+                
+                return matchesSearch && matchesCategory && matchesStock;
+            });
+            
+            currentPage = 1; // إعادة تعيين الصفحة الحالية
+            updateProductsDisplay();
+        }
+        
+        /**
+         * إعادة تعيين الفلاتر
+         */
+        function resetFilters() {
+            document.getElementById('mainSearchInput').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('stockFilter').value = '';
+            document.getElementById('headerSearchInput').value = '';
+            
+            filteredProducts = [...products];
+            currentPage = 1;
+            updateProductsDisplay();
+            showToast('تم إعادة تعيين الفلاتر', 'info');
+        }
+        
+        // ===================================
+        // دوال إدارة النماذج
+        // ===================================
+        
+        /**
+         * فتح نافذة إضافة منتج جديد
+         */
+        function openAddProductModal() {
+            document.getElementById('productForm').reset();
+            document.getElementById('productId').value = '';
+            document.getElementById('modalTitle').textContent = 'إضافة منتج جديد';
+            document.getElementById('saveBtnText').textContent = 'حفظ المنتج';
+            currentProductId = null;
+            clearFormErrors();
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+        
+        /**
+         * فتح نافذة تعديل منتج
+         */
+        function editProduct(productId) {
+            const product = products.find(prod => prod._id === productId);
+            if (!product) {
+                showToast('المنتج غير موجود', 'error');
+                return;
+            }
+            
+            // ملء النموذج ببيانات المنتج
+            document.getElementById('productId').value = product._id;
+            document.getElementById('productName').value = product.name || '';
+            document.getElementById('productCategory').value = product.category || '';
+            document.getElementById('productPrice').value = product.price || '';
+            document.getElementById('productCost').value = product.cost || '';
+            document.getElementById('productSku').value = product.sku || '';
+            document.getElementById('productStockQuantity').value = product.stockQuantity || '';
+            document.getElementById('productUnit').value = product.unit || '';
+            document.getElementById('productDescription').value = product.description || '';
+            
+            document.getElementById('modalTitle').textContent = 'تعديل بيانات المنتج';
+            document.getElementById('saveBtnText').textContent = 'حفظ التعديلات';
+            currentProductId = productId;
+            clearFormErrors();
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+        
+        /**
+         * عرض تفاصيل منتج
+         */
+        function viewProduct(productId) {
+            const product = products.find(prod => prod._id === productId);
+            if (!product) {
+                showToast('المنتج غير موجود', 'error');
+                return;
+            }
+            
+            // يمكن إضافة نافذة منفصلة لعرض التفاصيل
+            showToast(`عرض تفاصيل ${product.name}`, 'info');
+        }
+        
+        /**
+         * إظهار نافذة تحديث المخزون
+         */
+        function showStockUpdate(productId) {
+            const product = products.find(prod => prod._id === productId);
+            if (!product) {
+                showToast('المنتج غير موجود', 'error');
+                return;
+            }
+            
+            document.getElementById('stockProductId').value = product._id;
+            document.getElementById('stockProductName').textContent = product.name;
+            document.getElementById('currentStock').textContent = `${product.stockQuantity} ${product.unit || 'وحدة'}`;
+            document.getElementById('stockUpdateForm').reset();
+            document.getElementById('stockUpdateModal').classList.remove('hidden');
+        }
+        
+        /**
+         * إغلاق نافذة المنتج
+         */
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+            document.getElementById('productForm').reset();
+            currentProductId = null;
+            clearFormErrors();
+        }
+        
+        /**
+         * إغلاق نافذة تحديث المخزون
+         */
+        function closeStockUpdateModal() {
+            document.getElementById('stockUpdateModal').classList.add('hidden');
+            document.getElementById('stockUpdateForm').reset();
+        }
+        
+        /**
+         * تنظيف رسائل خطأ النموذج
+         */
+        function clearFormErrors() {
+            const errorElements = document.querySelectorAll('[id$="Error"]');
+            errorElements.forEach(element => {
+                element.classList.add('hidden');
+                element.textContent = '';
+            });
+            
+            const inputs = document.querySelectorAll('#productForm input, #productForm select, #productForm textarea');
+            inputs.forEach(input => {
+                input.classList.remove('border-red-500');
+            });
+        }
+        
+        /**
+         * عرض خطأ في حقل معين
+         */
+        function showFieldError(fieldName, message) {
+            const field = document.getElementById(fieldName);
+            const errorElement = document.getElementById(fieldName + 'Error');
+            
+            if (field) {
+                field.classList.add('border-red-500');
+            }
+            
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.classList.remove('hidden');
+            }
+        }
+        
+        /**
+         * التحقق من صحة النموذج
+         */
+        function validateForm(formData) {
+            clearFormErrors();
+            let isValid = true;
+            
+            // التحقق من الاسم
+            if (!formData.name?.trim()) {
+                showFieldError('productName', 'اسم المنتج مطلوب');
+                isValid = false;
+            }
+            
+            // التحقق من الفئة
+            if (!formData.category?.trim()) {
+                showFieldError('productCategory', 'الفئة مطلوبة');
+                isValid = false;
+            }
+            
+            // التحقق من السعر
+            if (!formData.price || formData.price <= 0) {
+                showFieldError('productPrice', 'السعر مطلوب ويجب أن يكون أكبر من صفر');
+                isValid = false;
+            }
+            
+            // التحقق من الكمية
+            if (!formData.stockQuantity || formData.stockQuantity < 0) {
+                showFieldError('productStockQuantity', 'كمية المخزون مطلوبة ولا يمكن أن تكون سالبة');
+                isValid = false;
+            }
+            
+            // التحقق من الوحدة
+            if (!formData.unit?.trim()) {
+                showFieldError('productUnit', 'الوحدة مطلوبة');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        // ===================================
+        // دوال مساعدة إضافية
+        // ===================================
+        
+        /**
+         * تغيير الصفحة الحالية
+         */
+        function changePage(page) {
+            currentPage = page;
+            updateProductsDisplay();
+        }
+        
+        /**
+         * تصدير قائمة المنتجات
+         */
+        function exportProducts() {
+            // تحويل البيانات إلى CSV
+            const headers = ['الاسم', 'الفئة', 'السعر', 'التكلفة', 'الكود', 'المخزون', 'الوحدة', 'الوصف', 'الحالة'];
+            const csvContent = [
+                headers.join(','),
+                ...filteredProducts.map(prod => [
+                    prod.name || '',
+                    prod.category || '',
+                    prod.price || '',
+                    prod.cost || '',
+                    prod.sku || '',
+                    prod.stockQuantity || '',
+                    prod.unit || '',
+                    prod.description || '',
+                    prod.isActive !== false ? 'نشط' : 'غير نشط'
+                ].join(','))
+            ].join('\n');
+            
+            // إنشاء رابط التحميل
+            const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `products-${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showToast('تم تصدير قائمة المنتجات بنجاح', 'success');
+        }
+        
+        // ===================================
+        // معالجات الأحداث
+        // ===================================
+        
+        // إرسال نموذج المنتج
+        document.getElementById('productForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const productData = {
+                name: formData.get('name'),
+                category: formData.get('category'),
+                price: parseFloat(formData.get('price')),
+                cost: formData.get('cost') ? parseFloat(formData.get('cost')) : undefined,
+                sku: formData.get('sku'),
+                stockQuantity: parseInt(formData.get('stockQuantity')),
+                unit: formData.get('unit'),
+                description: formData.get('description')
+            };
+            
+            if (!validateForm(productData)) {
+                return;
+            }
+            
+            const saveBtn = document.getElementById('saveBtn');
+            showButtonLoading(saveBtn);
+            
+            try {
+                if (currentProductId) {
+                    await updateProduct(currentProductId, productData);
+                } else {
+                    await createProduct(productData);
+                }
+            } catch (error) {
+                // معالجة أخطاء الخادم
+                if (error.response?.data?.errors) {
+                    Object.keys(error.response.data.errors).forEach(field => {
+                        const camelCaseField = 'product' + field.charAt(0).toUpperCase() + field.slice(1);
+                        showFieldError(camelCaseField, error.response.data.errors[field]);
+                    });
+                }
+            } finally {
+                hideButtonLoading(saveBtn);
+            }
+        });
+        
+        // إرسال نموذج تحديث المخزون
+        document.getElementById('stockUpdateForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const stockData = {
+                action: formData.get('action'),
+                quantity: parseInt(formData.get('quantity'))
+            };
+            
+            const productId = document.getElementById('stockProductId').value;
+            
+            try {
+                await updateStock(productId, stockData);
+            } catch (error) {
+                console.error('خطأ في تحديث المخزون:', error);
+            }
+        });
+        
+        // البحث الفوري
+        document.getElementById('mainSearchInput').addEventListener('input', debounce(applyFilters, 300));
+        document.getElementById('headerSearchInput').addEventListener('input', function() {
+            document.getElementById('mainSearchInput').value = this.value;
+            debounce(applyFilters, 300)();
+        });
+        
+        // فلاتر التغيير
+        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        document.getElementById('stockFilter').addEventListener('change', applyFilters);
+        
+        // أزرار الإجراءات
+        document.getElementById('addProductBtn').addEventListener('click', openAddProductModal);
+        document.getElementById('resetFiltersBtn').addEventListener('click', resetFilters);
+        document.getElementById('exportProductsBtn').addEventListener('click', exportProducts);
+        
+        // أزرار النوافذ المنبثقة
+        document.getElementById('closeModalBtn').addEventListener('click', closeProductModal);
+        document.getElementById('cancelBtn').addEventListener('click', closeProductModal);
+        document.getElementById('cancelStockUpdateBtn').addEventListener('click', closeStockUpdateModal);
+        
+        // إغلاق النوافذ المنبثقة عند النقر خارجها
+        document.getElementById('productModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProductModal();
+            }
+        });
+        
+        document.getElementById('stockUpdateModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeStockUpdateModal();
+            }
+        });
+        
+        // تسجيل الخروج
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                localStorage.removeItem('token');
+                showToast('تم تسجيل الخروج بنجاح', 'success');
+                setTimeout(() => {
+                    window.location.href = '/login.html';
+                }, 2000);
+            }
+        });
+        
+        // ===================================
+        // دوال مساعدة للأداء
+        // ===================================
+        
+        /**
+         * دالة التأخير لتحسين الأداء
+         */
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        // ===================================
+        // تهيئة التطبيق عند تحميل الصفحة
+        // ===================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // التحقق من وجود توكن المصادقة
+            if (!localStorage.getItem('token')) {
+                window.location.href = '/login.html';
+                return;
+            }
+            
+            // تهيئة الوضع المظلم
+            initializeDarkMode();
+            
+            // تهيئة القائمة الجانبية
+            initializeSidebar();
+            
+            // تحميل بيانات المنتجات
+            fetchProducts();
+            
+            // تحسين الأداء
+            if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+                document.body.classList.add('low-performance');
+            }
+            
+            // تحسين تحميل الخطوط
+            if ('fonts' in document) {
+                document.fonts.ready.then(() => {
+                    document.body.classList.add('fonts-loaded');
+                });
+            }
+            
+            // إظهار رسالة ترحيب
+            setTimeout(() => {
+                showToast('مرحباً بك في إدارة المنتجات', 'success');
+            }, 1000);
+            
+            console.log('تم تحميل صفحة إدارة المنتجات بنجاح');
+        });
+        
+        // معالج الأخطاء العام
+        window.addEventListener('error', function(e) {
+            console.error('خطأ في التطبيق:', e.error);
+            showToast('حدث خطأ غير متوقع. يرجى إعادة تحميل الصفحة.', 'error');
+        });
+        
+        // حفظ حالة التطبيق قبل إغلاق الصفحة
+        window.addEventListener('beforeunload', function() {
+            localStorage.setItem('lastVisit', new Date().toISOString());
+        });
+        
+        // تحديث التوكن قبل انتهاء صلاحيته
+        setInterval(() => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                // يمكن إضافة منطق تحديث التوكن هنا
+                console.log('فحص صحة التوكن...');
+            }
+        }, 30 * 60 * 1000); // كل 30 دقيقة
+    </script>
+</body>
+</html>

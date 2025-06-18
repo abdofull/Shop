@@ -1,0 +1,8 @@
+src/
+frontend/public/assets/
+frontend/public/js/
+package.json
+package-lock.json
+.env
+node_modules/
+README.md
