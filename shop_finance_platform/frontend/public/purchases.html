@@ -2,369 +2,2023 @@
 <html lang="ar" dir="rtl">
 <head>
     <!-- ===================================
-         إعدادات الرأس الأساسية
+         إعدادات الرأس الأساسية وتحسين SEO
          =================================== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="إدارة المشتريات في منصة إدارة المحلات المالية">
-    <meta name="keywords" content="مشتريات, إدارة, محلات, ليبيا">
-    <meta name="author" content="منصة إدارة المحلات المالية">
+    <meta name="description" content="إدارة المشتريات الشاملة في منصة إدارة المحلات التجارية - نظام متكامل لإدارة عمليات الشراء والموردين">
+    <meta name="keywords" content="إدارة المشتريات, موردين, عمليات الشراء, محلات تجارية, ليبيا, نظام إدارة">
+    <meta name="author" content="منصة إدارة المحلات الليبية">
+    <meta name="robots" content="noindex, nofollow">
     
-    <!-- عنوان الصفحة -->
-    <title>إدارة المشتريات - منصة إدارة المحلات المالية</title>
+    <!-- تحسين SEO -->
+    <title>إدارة المشتريات | منصة إدارة المحلات الليبية</title>
+    <meta property="og:title" content="إدارة المشتريات - منصة إدارة المحلات الليبية">
+    <meta property="og:description" content="نظام شامل لإدارة عمليات الشراء والموردين مع أدوات متقدمة للتتبع والتحليل">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_LY">
+    <meta name="twitter:card" content="summary_large_image">
     
-    <!-- ===================================
-         ربط ملفات التنسيق والخطوط
-         =================================== -->
-    <!-- الخط العربي تجوال من Google Fonts -->
+    <!-- تحسين الأداء -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
     
-    <!-- Bootstrap 5.3 للتخطيط المتجاوب -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- الخطوط العربية المحسنة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS للتصميم المتجاوب -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Animate.css للحركات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Axios للتعامل مع API -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     
-    <!-- ملف التنسيق الرئيسي -->
-    <link rel="stylesheet" href="../src/css/main.css">
+    <!-- تخصيص Tailwind CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            500: '#5D5CDE',
+                            600: '#4c46c7',
+                            700: '#3b359e',
+                            800: '#2a2575',
+                            900: '#1a164c'
+                        }
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
     
-    <!-- ملف تنسيق صفحة إدارة المشتريات -->
-    <link rel="stylesheet" href="../src/css/pages/purchases.css">
-    
-    <!-- ===================================
-         إعدادات SEO والمشاركة الاجتماعية
-         =================================== -->
-    <meta property="og:title" content="إدارة المشتريات - منصة إدارة المحلات المالية">
-    <meta property="og:description" content="إدارة شاملة لعمليات الشراء في محلك التجاري">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    
-    <!-- أيقونة الموقع -->
-    <link rel="icon" type="image/x-icon" href="../public/assets/images/favicon.ico">
-    
-    <!-- تحسين الأداء -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <!-- أنماط CSS مخصصة -->
+    <style>
+        /* تحسين الخطوط والنصوص العربية */
+        body {
+            font-family: 'Cairo', sans-serif;
+            font-feature-settings: 'liga' 1, 'kern' 1;
+        }
+        
+        /* تحسين الحركات والانتقالات */
+        .smooth-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* تحسين شريط التمرير */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #5D5CDE;
+            border-radius: 3px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #4c46c7;
+        }
+        
+        /* تحسين الرسوم المتحركة */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* تحسين الاستجابة للأجهزة المحمولة */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            
+            .mobile-menu.open {
+                transform: translateX(0);
+            }
+            
+            .table-container {
+                overflow-x: auto;
+            }
+            
+            .mobile-card {
+                display: block;
+            }
+            
+            .desktop-table {
+                display: none;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-card {
+                display: none;
+            }
+            
+            .desktop-table {
+                display: table;
+            }
+        }
+        
+        /* تحسين الوضع المظلم */
+        .dark .bg-white {
+            background-color: #1f2937 !important;
+        }
+        
+        .dark .text-gray-800 {
+            color: #f9fafb !important;
+        }
+        
+        .dark .text-gray-600 {
+            color: #d1d5db !important;
+        }
+        
+        .dark .border-gray-200 {
+            border-color: #374151 !important;
+        }
+        
+        /* مؤشر التحميل المحسن */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #5D5CDE;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* تحسين نماذج الإدخال */
+        .form-control:focus {
+            border-color: #5D5CDE;
+            box-shadow: 0 0 0 0.2rem rgba(93, 92, 222, 0.25);
+        }
+        
+        /* تحسين الأزرار */
+        .btn-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .8;
+            }
+        }
+        
+        /* تحسين البطاقات */
+        .purchase-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .purchase-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* تحسين الجداول */
+        .table-row:hover {
+            background-color: rgba(93, 92, 222, 0.05);
+        }
+        
+        /* تحسين النماذج المنبثقة */
+        .modal-backdrop {
+            backdrop-filter: blur(5px);
+        }
+        
+        /* تحسين حقول إدخال المنتجات */
+        .product-item {
+            background: rgba(93, 92, 222, 0.05);
+            border: 1px solid rgba(93, 92, 222, 0.2);
+        }
+        
+        /* تحسين شارات الحالة */
+        .status-badge {
+            font-weight: 500;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+        }
+        
+        .status-pending { background-color: #fef3c7; color: #92400e; }
+        .status-completed { background-color: #d1fae5; color: #065f46; }
+        .status-cancelled { background-color: #fee2e2; color: #991b1b; }
+        .status-paid { background-color: #dbeafe; color: #1e40af; }
+        .status-partially_paid { background-color: #fed7aa; color: #9a3412; }
+    </style>
 </head>
 
-<body class="purchases-page">
+<body class="bg-gray-50 dark:bg-gray-900 font-cairo smooth-transition">
     <!-- ===================================
-         شريط التنقل العلوي (Navbar)
+         القائمة الجانبية المتطورة
          =================================== -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-        <div class="container">
-            <!-- شعار المنصة -->
-            <a class="navbar-brand" href="/dashboard.html">
-                <i class="fas fa-store me-2"></i>
-                منصة إدارة المحلات المالية
-            </a>
-            
-            <!-- زر التبديل للقوائم المتجاوبة -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <!-- قائمة التنقل -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/dashboard.html">
-                            <i class="fas fa-home me-1"></i>
-                            لوحة التحكم
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/products.html">
-                            <i class="fas fa-box me-1"></i>
-                            المنتجات
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/employees.html">
-                            <i class="fas fa-users me-1"></i>
-                            الموظفين
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/customers.html">
-                            <i class="fas fa-user-friends me-1"></i>
-                            العملاء
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/suppliers.html">
-                            <i class="fas fa-truck me-1"></i>
-                            الموردين
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/invoices.html">
-                            <i class="fas fa-file-invoice-dollar me-1"></i>
-                            الفواتير
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/purchases.html">
-                            <i class="fas fa-shopping-cart me-1"></i>
-                            المشتريات
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/transactions.html">
-                            <i class="fas fa-exchange-alt me-1"></i>
-                            المعاملات
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/reports.html">
-                            <i class="fas fa-chart-pie me-1"></i>
-                            التقارير
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="logoutBtn">
-                            <i class="fas fa-sign-out-alt me-1"></i>
-                            تسجيل الخروج
-                        </a>
-                    </li>
-                </ul>
+    <div id="sidebar" class="fixed right-0 top-0 h-full w-64 bg-white dark:bg-gray-800 shadow-xl transform translate-x-0 transition-transform duration-300 ease-in-out z-50 custom-scrollbar overflow-y-auto">
+        <!-- رأس القائمة الجانبية -->
+        <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-store text-white text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-gray-800 dark:text-white">منصة المحلات</h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">إدارة متكاملة</p>
+                </div>
             </div>
         </div>
-    </nav>
-
+        
+        <!-- عناصر القائمة الجانبية -->
+        <nav class="p-4">
+            <div class="space-y-2">
+                <!-- لوحة التحكم -->
+                <a href="/dashboard.html" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-tachometer-alt w-5"></i>
+                    <span class="font-medium">لوحة التحكم</span>
+                </a>
+                
+                <!-- المبيعات -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">المبيعات</h3>
+                    <a href="#sales" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-cash-register w-5"></i>
+                        <span>نقاط البيع</span>
+                    </a>
+                    <a href="#invoices" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-file-invoice-dollar w-5"></i>
+                        <span>الفواتير</span>
+                    </a>
+                    <a href="#customers" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-users w-5"></i>
+                        <span>العملاء</span>
+                    </a>
+                </div>
+                
+                <!-- المخزون -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">المخزون</h3>
+                    <a href="#products" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-boxes w-5"></i>
+                        <span>المنتجات</span>
+                    </a>
+                    <a href="#categories" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-tags w-5"></i>
+                        <span>الفئات</span>
+                    </a>
+                    <a href="#suppliers" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-truck w-5"></i>
+                        <span>الموردين</span>
+                    </a>
+                    <a href="#purchases" class="sidebar-item active flex items-center space-x-3 space-x-reverse p-3 rounded-lg bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400">
+                        <i class="fas fa-shopping-cart w-5"></i>
+                        <span>المشتريات</span>
+                    </a>
+                </div>
+                
+                <!-- الموارد البشرية -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">الموارد البشرية</h3>
+                    <a href="#employees" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-user-tie w-5"></i>
+                        <span>الموظفين</span>
+                    </a>
+                    <a href="#attendance" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-clock w-5"></i>
+                        <span>الحضور والانصراف</span>
+                    </a>
+                </div>
+                
+                <!-- التقارير والتحليلات -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">التقارير</h3>
+                    <a href="#reports" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-chart-line w-5"></i>
+                        <span>التقارير المالية</span>
+                    </a>
+                    <a href="#analytics" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-analytics w-5"></i>
+                        <span>التحليلات</span>
+                    </a>
+                </div>
+                
+                <!-- الإعدادات -->
+                <div class="menu-group">
+                    <h3 class="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 px-3">الإعدادات</h3>
+                    <a href="#settings" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-cog w-5"></i>
+                        <span>إعدادات النظام</span>
+                    </a>
+                    <a href="#profile" class="sidebar-item flex items-center space-x-3 space-x-reverse p-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-user-circle w-5"></i>
+                        <span>الملف الشخصي</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
     <!-- ===================================
-         المحتوى الرئيسي لصفحة إدارة المشتريات
+         الطبقة العلوية للمحتوى الرئيسي
          =================================== -->
-    <div class="container mt-4">
-        <!-- رأس الصفحة -->
-        <div class="page-header animate__animated animate__fadeInDown">
-            <h1 class="display-4"><i class="fas fa-shopping-cart me-2"></i> إدارة المشتريات</h1>
-            <button class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite" id="addPurchaseBtn">
-                <i class="fas fa-plus-circle me-2"></i>
-                إضافة عملية شراء جديدة
-            </button>
-        </div>
-
-        <!-- ===================================
-             قسم الفلاتر والبحث
-             =================================== -->
-        <div class="filters-section card mb-4 animate__animated animate__fadeInUp">
-            <div class="card-body">
-                <div class="row align-items-center">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="searchInput" placeholder="البحث عن عملية شراء بالرقم أو اسم المورد...">
-                            <div class="input-icon">
-                                <i class="fas fa-search"></i>
-                            </div>
+    <div id="main-content" class="mr-64 transition-all duration-300">
+        <!-- الشريط العلوي المحسن -->
+        <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
+            <div class="px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <!-- الجانب الأيمن - العنوان والبحث -->
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <!-- زر إخفاء القائمة الجانبية -->
+                        <button id="toggleSidebar" class="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <i class="fas fa-bars text-lg"></i>
+                        </button>
+                        
+                        <!-- معلومات الصفحة -->
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-800 dark:text-white">إدارة المشتريات</h1>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">إدارة شاملة لعمليات الشراء</p>
                         </div>
                     </div>
-                    <div class="col-md-3 mb-3 mb-md-0">
-                        <select class="form-select" id="statusFilter">
-                            <option value="">جميع الحالات</option>
-                            <option value="completed">مكتملة</option>
-                            <option value="pending">معلقة</option>
-                            <option value="cancelled">ملغاة</option>
-                        </select>
+                    
+                    <!-- الجانب الأيسر - الإشعارات والإعدادات -->
+                    <div class="flex items-center space-x-4 space-x-reverse">
+                        <!-- شريط البحث -->
+                        <div class="hidden md:block relative">
+                            <input type="search" 
+                                   id="headerSearchInput" 
+                                   placeholder="البحث عن عملية شراء..." 
+                                   class="w-64 pr-10 pl-4 py-2 text-base bg-gray-100 dark:bg-gray-700 border-0 rounded-lg focus:ring-2 focus:ring-primary-500 dark:text-white">
+                            <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                        
+                        <!-- زر تبديل الوضع المظلم -->
+                        <button id="darkModeToggle" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400">
+                            <i class="fas fa-moon text-lg dark:hidden"></i>
+                            <i class="fas fa-sun text-lg hidden dark:inline"></i>
+                        </button>
+                        
+                        <!-- الإشعارات -->
+                        <div class="relative">
+                            <button id="notificationsBtn" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400 relative">
+                                <i class="fas fa-bell text-lg"></i>
+                                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                            </button>
+                        </div>
+                        
+                        <!-- معلومات المستخدم -->
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="hidden md:block text-right">
+                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">أحمد محمد</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">مدير المحل</p>
+                            </div>
+                            <div class="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
+                                <span class="text-white font-medium">أ</span>
+                            </div>
+                        </div>
+                        
+                        <!-- زر تسجيل الخروج -->
+                        <button id="logoutBtn" class="p-2 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20">
+                            <i class="fas fa-sign-out-alt text-lg"></i>
+                        </button>
                     </div>
-                    <div class="col-md-3">
-                        <button class="btn btn-secondary w-100" id="resetFiltersBtn">
-                            <i class="fas fa-sync-alt me-2"></i>
+                </div>
+            </div>
+        </header>
+        
+        <!-- ===================================
+             المحتوى الرئيسي لصفحة المشتريات
+             =================================== -->
+        <main class="p-6">
+            <!-- إحصائيات المشتريات السريعة -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- إجمالي المشتريات -->
+                <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-xl text-white fade-in">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-100 text-sm font-medium">إجمالي المشتريات</p>
+                            <p class="text-3xl font-bold mt-2" id="totalPurchases">-</p>
+                            <p class="text-blue-100 text-sm mt-1">
+                                <i class="fas fa-shopping-cart mr-1"></i>
+                                عملية شراء
+                            </p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                            <i class="fas fa-shopping-cart text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- المشتريات المعلقة -->
+                <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 p-6 rounded-xl text-white fade-in" style="animation-delay: 0.1s">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-yellow-100 text-sm font-medium">المشتريات المعلقة</p>
+                            <p class="text-3xl font-bold mt-2" id="pendingPurchases">-</p>
+                            <p class="text-yellow-100 text-sm mt-1">
+                                <i class="fas fa-clock mr-1"></i>
+                                تحتاج متابعة
+                            </p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                            <i class="fas fa-clock text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- إجمالي المبالغ -->
+                <div class="bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-xl text-white fade-in" style="animation-delay: 0.2s">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-green-100 text-sm font-medium">إجمالي المبالغ</p>
+                            <p class="text-3xl font-bold mt-2" id="totalAmount">- د.ل</p>
+                            <p class="text-green-100 text-sm mt-1">
+                                <i class="fas fa-money-bill-wave mr-1"></i>
+                                هذا الشهر
+                            </p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                            <i class="fas fa-wallet text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- المبالغ المستحقة -->
+                <div class="bg-gradient-to-r from-red-500 to-red-600 p-6 rounded-xl text-white fade-in" style="animation-delay: 0.3s">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-red-100 text-sm font-medium">المبالغ المستحقة</p>
+                            <p class="text-3xl font-bold mt-2" id="outstandingAmount">- د.ل</p>
+                            <p class="text-red-100 text-sm mt-1">
+                                <i class="fas fa-exclamation-triangle mr-1"></i>
+                                غير مدفوعة
+                            </p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                            <i class="fas fa-credit-card text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ===================================
+                 أدوات التحكم والفلاتر
+                 =================================== -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 mb-8 slide-up">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <!-- الجانب الأيمن - البحث والفلاتر -->
+                    <div class="flex flex-col md:flex-row gap-4 flex-1">
+                        <!-- مربع البحث الرئيسي -->
+                        <div class="relative flex-1">
+                            <input type="search" 
+                                   id="mainSearchInput" 
+                                   placeholder="البحث في المشتريات..." 
+                                   class="w-full pr-10 pl-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                            <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+                        
+                        <!-- فلتر المورد -->
+                        <select id="supplierFilter" class="px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                            <option value="">جميع الموردين</option>
+                            <!-- سيتم ملؤها ديناميكياً -->
+                        </select>
+                        
+                        <!-- فلتر الحالة -->
+                        <select id="statusFilter" class="px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                            <option value="">جميع الحالات</option>
+                            <option value="pending">معلقة</option>
+                            <option value="completed">مكتملة</option>
+                            <option value="cancelled">ملغاة</option>
+                            <option value="paid">مدفوعة</option>
+                            <option value="partially_paid">مدفوعة جزئياً</option>
+                        </select>
+                        
+                        <!-- زر إعادة تعيين الفلاتر -->
+                        <button id="resetFiltersBtn" class="px-4 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                            <i class="fas fa-sync-alt mr-2"></i>
                             إعادة تعيين
                         </button>
                     </div>
+                    
+                    <!-- الجانب الأيسر - أزرار الإجراءات -->
+                    <div class="flex gap-3">
+                        <button id="exportPurchasesBtn" class="px-4 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors">
+                            <i class="fas fa-file-export mr-2"></i>
+                            تصدير
+                        </button>
+                        <button id="addPurchaseBtn" class="px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors btn-pulse">
+                            <i class="fas fa-plus mr-2"></i>
+                            إضافة عملية شراء
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- ===================================
-             جدول عرض المشتريات
-             =================================== -->
-        <div class="card animate__animated animate__fadeInUp animate__delay-1s">
-            <div class="card-header">
-                <h2 class="card-title"><i class="fas fa-list"></i> قائمة المشتريات</h2>
-            </div>
-            <div class="card-body">
-                <div class="table-container">
-                    <table class="table table-hover" id="purchasesTable">
-                        <thead>
+            
+            <!-- ===================================
+                 جدول المشتريات للشاشات الكبيرة
+                 =================================== -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm slide-up desktop-table" style="animation-delay: 0.2s">
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+                            <i class="fas fa-shopping-cart mr-2"></i>
+                            قائمة المشتريات
+                        </h3>
+                        <span id="purchasesCount" class="text-sm text-gray-500 dark:text-gray-400">جاري التحميل...</span>
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 dark:bg-gray-700">
                             <tr>
-                                <th>رقم الشراء</th>
-                                <th>المورد</th>
-                                <th>تاريخ الشراء</th>
-                                <th>المبلغ الإجمالي</th>
-                                <th>الحالة</th>
-                                <th>الإجراءات</th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    رقم الشراء
+                                </th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    المورد
+                                </th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    التاريخ
+                                </th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    المبلغ الإجمالي
+                                </th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    المبلغ المدفوع
+                                </th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    الحالة
+                                </th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                    الإجراءات
+                                </th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="6" class="text-center text-muted">جاري تحميل بيانات المشتريات...</td>
-                            </tr>
+                        <tbody id="purchasesTableBody" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                            <!-- سيتم ملؤها بواسطة JavaScript -->
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================================
-         نموذج إضافة/تعديل عملية شراء (Modal)
-         =================================== -->
-    <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="purchaseModalLabel">إضافة عملية شراء جديدة</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+                
+                <!-- Pagination -->
+                <div class="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center justify-between">
+                        <div class="text-sm text-gray-500 dark:text-gray-400" id="paginationInfo">
+                            عرض 1-10 من 50 عملية شراء
+                        </div>
+                        <div class="flex space-x-2 space-x-reverse" id="paginationControls">
+                            <!-- سيتم ملؤها بواسطة JavaScript -->
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form id="purchaseForm" novalidate>
-                        <input type="hidden" id="purchaseId">
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="purchaseSupplier" class="form-label"><i class="fas fa-truck me-2"></i> المورد <span class="text-danger">*</span></label>
-                                    <select class="form-select" id="purchaseSupplier" name="supplier" required>
-                                        <option value="">اختر مورد...</option>
-                                        <!-- سيتم ملء الخيارات ديناميكياً بواسطة JavaScript -->
-                                    </select>
-                                    <div class="form-feedback invalid" id="purchaseSupplierError"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="purchaseDate" class="form-label"><i class="fas fa-calendar-alt me-2"></i> تاريخ الشراء <span class="text-danger">*</span></label>
-                                    <input type="date" class="form-control" id="purchaseDate" name="purchaseDate" required>
-                                    <div class="form-feedback invalid" id="purchaseDateError"></div>
-                                </div>
-                            </div>
+            </div>
+            
+            <!-- ===================================
+                 عرض البطاقات للشاشات الصغيرة
+                 =================================== -->
+            <div id="purchasesCardsContainer" class="mobile-card space-y-4">
+                <!-- سيتم ملؤها بواسطة JavaScript -->
+            </div>
+        </main>
+    </div>
+    
+    <!-- ===================================
+         نافذة إضافة/تعديل عملية شراء
+         =================================== -->
+    <div id="purchaseModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-4xl w-full max-h-screen overflow-y-auto">
+            <!-- رأس النافذة -->
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+                <h3 id="modalTitle" class="text-xl font-semibold text-gray-800 dark:text-white">إضافة عملية شراء جديدة</h3>
+                <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- محتوى النافذة -->
+            <div class="p-6">
+                <form id="purchaseForm" class="space-y-6">
+                    <input type="hidden" id="purchaseId">
+                    
+                    <!-- معلومات عملية الشراء الأساسية -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="purchaseSupplier" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-truck mr-2"></i>
+                                المورد *
+                            </label>
+                            <select id="purchaseSupplier" 
+                                    name="supplier" 
+                                    required 
+                                    class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                                <option value="">اختر مورد...</option>
+                                <!-- سيتم ملؤها ديناميكياً -->
+                            </select>
+                            <div id="purchaseSupplierError" class="text-red-500 text-sm mt-1 hidden"></div>
                         </div>
                         
-                        <hr class="my-4">
-                        
-                        <h4><i class="fas fa-boxes me-2"></i> تفاصيل المنتجات المشتراة</h4>
-                        <div id="purchaseItemsContainer">
-                            <!-- سيتم إضافة عناصر المنتجات هنا ديناميكياً -->
+                        <div>
+                            <label for="purchaseDate" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-calendar-alt mr-2"></i>
+                                تاريخ الشراء *
+                            </label>
+                            <input type="date" 
+                                   id="purchaseDate" 
+                                   name="purchaseDate" 
+                                   required 
+                                   class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                            <div id="purchaseDateError" class="text-red-500 text-sm mt-1 hidden"></div>
                         </div>
-                        <button type="button" class="btn btn-outline-primary btn-sm mt-3" id="addPurchaseItemBtn">
-                            <i class="fas fa-plus-circle me-2"></i> إضافة منتج
+                    </div>
+                    
+                    <!-- قسم المنتجات -->
+                    <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold text-gray-800 dark:text-white">
+                                <i class="fas fa-boxes mr-2"></i>
+                                المنتجات المشتراة
+                            </h4>
+                            <button type="button" id="addProductBtn" class="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors">
+                                <i class="fas fa-plus mr-2"></i>
+                                إضافة منتج
+                            </button>
+                        </div>
+                        
+                        <div id="productsContainer" class="space-y-4">
+                            <!-- سيتم إضافة المنتجات هنا ديناميكياً -->
+                        </div>
+                    </div>
+                    
+                    <!-- معلومات إضافية -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-gray-200 dark:border-gray-700 pt-6">
+                        <div>
+                            <label for="taxAmount" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-percent mr-2"></i>
+                                مبلغ الضريبة
+                            </label>
+                            <input type="number" 
+                                   id="taxAmount" 
+                                   name="taxAmount" 
+                                   min="0" 
+                                   step="0.01" 
+                                   class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                        </div>
+                        
+                        <div>
+                            <label for="totalAmount" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-money-bill-wave mr-2"></i>
+                                المبلغ الإجمالي
+                            </label>
+                            <input type="number" 
+                                   id="totalAmount" 
+                                   name="totalAmount" 
+                                   readonly 
+                                   class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-600 dark:text-white">
+                        </div>
+                        
+                        <div>
+                            <label for="purchaseStatus" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-info-circle mr-2"></i>
+                                حالة الشراء *
+                            </label>
+                            <select id="purchaseStatus" 
+                                    name="status" 
+                                    required 
+                                    class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                                <option value="pending">معلقة</option>
+                                <option value="completed">مكتملة</option>
+                                <option value="cancelled">ملغاة</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- الملاحظات -->
+                    <div>
+                        <label for="purchaseNotes" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                            <i class="fas fa-sticky-note mr-2"></i>
+                            ملاحظات
+                        </label>
+                        <textarea id="purchaseNotes" 
+                                  name="notes" 
+                                  rows="3" 
+                                  class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"></textarea>
+                    </div>
+                    
+                    <!-- أزرار الإجراءات -->
+                    <div class="flex justify-end space-x-3 space-x-reverse pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <button type="button" 
+                                id="cancelBtn" 
+                                class="px-6 py-3 border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <i class="fas fa-times mr-2"></i>
+                            إلغاء
                         </button>
-
-                        <hr class="my-4">
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="purchaseTotalAmount" class="form-label"><i class="fas fa-money-bill-wave me-2"></i> المبلغ الإجمالي</label>
-                                    <input type="number" step="0.01" class="form-control" id="purchaseTotalAmount" name="totalAmount" readonly>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="purchaseStatus" class="form-label"><i class="fas fa-info-circle me-2"></i> حالة الشراء <span class="text-danger">*</span></label>
-                                    <select class="form-select" id="purchaseStatus" name="status" required>
-                                        <option value="pending">معلقة</option>
-                                        <option value="completed">مكتملة</option>
-                                        <option value="cancelled">ملغاة</option>
-                                    </select>
-                                    <div class="form-feedback invalid" id="purchaseStatusError"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="modal-footer d-flex justify-content-end">
-                            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">
-                                <i class="fas fa-times me-2"></i>
-                                إلغاء
-                            </button>
-                            <button type="submit" class="btn btn-primary">
-                                <span class="btn-text"><i class="fas fa-save me-2"></i> حفظ</span>
-                                <span class="btn-spinner d-none">
-                                    <i class="fas fa-spinner fa-spin"></i>
-                                </span>
-                            </button>
-                        </div>
-                    </form>
+                        <button type="submit" 
+                                id="saveBtn" 
+                                class="px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white rounded-lg transition-colors">
+                            <i class="fas fa-save mr-2"></i>
+                            <span id="saveBtnText">حفظ عملية الشراء</span>
+                            <i id="saveBtnSpinner" class="fas fa-spinner fa-spin mr-2 hidden"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ===================================
+         نافذة تأكيد الحذف
+         =================================== -->
+    <div id="deleteConfirmModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl max-w-md w-full">
+            <div class="p-6">
+                <div class="flex items-center space-x-4 space-x-reverse mb-4">
+                    <div class="w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-exclamation-triangle text-red-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white">تأكيد الحذف</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">هذا الإجراء لا يمكن التراجع عنه</p>
+                    </div>
+                </div>
+                
+                <p class="text-gray-600 dark:text-gray-300 mb-6">
+                    هل أنت متأكد من حذف عملية الشراء <strong id="deletePurchaseNumber"></strong>؟
+                    سيتم حذف جميع البيانات المرتبطة بها.
+                </p>
+                
+                <div class="flex justify-end space-x-3 space-x-reverse">
+                    <button id="cancelDeleteBtn" class="px-4 py-2 border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                        إلغاء
+                    </button>
+                    <button id="confirmDeleteBtn" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors">
+                        <i class="fas fa-trash mr-2"></i>
+                        حذف عملية الشراء
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-
+    
     <!-- ===================================
-         رسائل التنبيه والحالة
+         مؤشر التحميل العام
          =================================== -->
-    <!-- رسالة الخطأ -->
-    <div id="errorMessage" class="alert alert-danger alert-dismissible fade position-fixed" style="top: 20px; right: 20px; z-index: 9999; display: none;">
-        <div class="d-flex align-items-center">
-            <i class="fas fa-exclamation-triangle me-3"></i>
-            <div class="alert-content">
-                <strong>خطأ!</strong>
-                <span class="alert-text"></span>
-            </div>
-        </div>
-        <button type="button" class="btn-close" aria-label="إغلاق"></button>
-    </div>
-    
-    <!-- رسالة النجاح -->
-    <div id="successMessage" class="alert alert-success alert-dismissible fade position-fixed" style="top: 20px; right: 20px; z-index: 9999; display: none;">
-        <div class="d-flex align-items-center">
-            <i class="fas fa-check-circle me-3"></i>
-            <div class="alert-content">
-                <strong>نجح!</strong>
-                <span class="alert-text"></span>
-            </div>
-        </div>
-        <button type="button" class="btn-close" aria-label="إغلاق"></button>
-    </div>
-    
-    <!-- مؤشر التحميل العام -->
-    <div id="loadingOverlay" class="loading-overlay d-none">
-        <div class="loading-content">
+    <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-8 flex flex-col items-center space-y-4">
             <div class="loading-spinner"></div>
-            <div class="loading-text">جاري التحميل...</div>
+            <p class="text-gray-600 dark:text-gray-300">جاري التحميل...</p>
         </div>
     </div>
-
+    
     <!-- ===================================
-         ربط ملفات JavaScript
+         نظام الإشعارات التفاعلية
          =================================== -->
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- ملفات JavaScript المخصصة -->
-    <script src="../src/js/api.js"></script>
-    <script src="../src/js/utils.js"></script>
-    <!-- <script src="../src/js/pages/purchases.js"></script> -->
+    <div id="toastContainer" class="fixed top-4 left-4 z-50 space-y-2"></div>
     
     <!-- ===================================
-         سكريبت تحسين الأداء
+         JavaScript للوظائف التفاعلية
          =================================== -->
     <script>
-        // تحسين تحميل الخطوط
-        if ("fonts" in document) {
-            document.fonts.ready.then(() => {
-                document.body.classList.add("fonts-loaded");
+        // ===================================
+        // إعدادات الأساسية والمتغيرات العامة
+        // ===================================
+        
+        // إعداد Axios
+        const API_BASE_URL = 'http://localhost:5000/api';
+        
+        // إعداد Axios مع التوكن
+        axios.defaults.baseURL = API_BASE_URL;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+        
+        // متغيرات عامة لإدارة البيانات
+        let purchases = [];
+        let filteredPurchases = [];
+        let suppliers = [];
+        let products = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let isLoading = false;
+        let currentPurchaseId = null;
+        
+        // ===================================
+        // إعدادات الوضع المظلم والفاتح
+        // ===================================
+        
+        function initializeDarkMode() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true' || 
+                (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+            }
+        }
+        
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('darkMode', isDark);
+        });
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (!localStorage.getItem('darkMode')) {
+                if (event.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+        
+        // ===================================
+        // إعدادات القائمة الجانبية المتجاوبة
+        // ===================================
+        
+        function initializeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('main-content');
+            const toggleBtn = document.getElementById('toggleSidebar');
+            
+            function toggleSidebar() {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.toggle('translate-x-full');
+                } else {
+                    const isHidden = sidebar.classList.contains('-translate-x-full');
+                    sidebar.classList.toggle('-translate-x-full');
+                    mainContent.classList.toggle('mr-0');
+                    mainContent.classList.toggle('mr-64');
+                }
+            }
+            
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', toggleSidebar);
+            }
+            
+            function handleResize() {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('translate-x-full');
+                    mainContent.classList.remove('mr-64');
+                    mainContent.classList.add('mr-0');
+                } else {
+                    sidebar.classList.remove('translate-x-full');
+                    mainContent.classList.add('mr-64');
+                    mainContent.classList.remove('mr-0');
+                }
+            }
+            
+            window.addEventListener('resize', handleResize);
+            handleResize();
+        }
+        
+        // ===================================
+        // نظام الإشعارات التفاعلية
+        // ===================================
+        
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            const bgColor = {
+                'success': 'bg-green-500',
+                'error': 'bg-red-500',
+                'warning': 'bg-yellow-500',
+                'info': 'bg-blue-500'
+            }[type];
+            
+            const icon = {
+                'success': 'fas fa-check-circle',
+                'error': 'fas fa-exclamation-circle',
+                'warning': 'fas fa-exclamation-triangle',
+                'info': 'fas fa-info-circle'
+            }[type];
+            
+            toast.className = `${bgColor} text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300`;
+            toast.innerHTML = `
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <i class="${icon}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            const container = document.getElementById('toastContainer');
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-x-full');
+            }, 100);
+            
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (container.contains(toast)) {
+                        container.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+        
+        // ===================================
+        // إدارة مؤشرات التحميل
+        // ===================================
+        
+        function showLoading() {
+            document.getElementById('loadingOverlay').classList.remove('hidden');
+        }
+        
+        function hideLoading() {
+            document.getElementById('loadingOverlay').classList.add('hidden');
+        }
+        
+        function showButtonLoading(button) {
+            const spinner = button.querySelector('#saveBtnSpinner');
+            const text = button.querySelector('#saveBtnText');
+            if (spinner && text) {
+                spinner.classList.remove('hidden');
+                text.textContent = 'جاري الحفظ...';
+                button.disabled = true;
+            }
+        }
+        
+        function hideButtonLoading(button) {
+            const spinner = button.querySelector('#saveBtnSpinner');
+            const text = button.querySelector('#saveBtnText');
+            if (spinner && text) {
+                spinner.classList.add('hidden');
+                text.textContent = 'حفظ عملية الشراء';
+                button.disabled = false;
+            }
+        }
+        
+        // ===================================
+        // دوال التعامل مع API
+        // ===================================
+        
+        /**
+         * جلب قائمة المشتريات من API
+         */
+        async function fetchPurchases() {
+            try {
+                isLoading = true;
+                const response = await axios.get('/purchases');
+                purchases = response.data;
+                filteredPurchases = [...purchases];
+                updatePurchasesDisplay();
+                updateStatistics();
+                showToast('تم تحديث قائمة المشتريات بنجاح', 'success');
+            } catch (error) {
+                console.error('خطأ في جلب المشتريات:', error);
+                showToast('فشل في تحميل قائمة المشتريات', 'error');
+            } finally {
+                isLoading = false;
+            }
+        }
+        
+        /**
+         * جلب قائمة الموردين
+         */
+        async function fetchSuppliers() {
+            try {
+                const response = await axios.get('/suppliers');
+                suppliers = response.data;
+                updateSuppliersDropdown();
+            } catch (error) {
+                console.error('خطأ في جلب الموردين:', error);
+                showToast('فشل في تحميل قائمة الموردين', 'error');
+            }
+        }
+        
+        /**
+         * جلب قائمة المنتجات
+         */
+        async function fetchProducts() {
+            try {
+                const response = await axios.get('/products');
+                products = response.data;
+            } catch (error) {
+                console.error('خطأ في جلب المنتجات:', error);
+                showToast('فشل في تحميل قائمة المنتجات', 'error');
+            }
+        }
+        
+        /**
+         * إضافة عملية شراء جديدة
+         */
+        async function createPurchase(purchaseData) {
+            try {
+                showLoading();
+                const response = await axios.post('/purchases', purchaseData);
+                purchases.unshift(response.data);
+                filteredPurchases = [...purchases];
+                updatePurchasesDisplay();
+                updateStatistics();
+                closePurchaseModal();
+                showToast('تم إضافة عملية الشراء بنجاح', 'success');
+                return response.data;
+            } catch (error) {
+                console.error('خطأ في إضافة عملية الشراء:', error);
+                showToast(error.response?.data?.message || 'فشل في إضافة عملية الشراء', 'error');
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        /**
+         * تحديث عملية شراء
+         */
+        async function updatePurchase(purchaseId, purchaseData) {
+            try {
+                showLoading();
+                const response = await axios.put(`/purchases/${purchaseId}`, purchaseData);
+                const index = purchases.findIndex(purchase => purchase._id === purchaseId);
+                if (index !== -1) {
+                    purchases[index] = response.data;
+                    filteredPurchases = [...purchases];
+                    updatePurchasesDisplay();
+                    updateStatistics();
+                }
+                closePurchaseModal();
+                showToast('تم تحديث عملية الشراء بنجاح', 'success');
+                return response.data;
+            } catch (error) {
+                console.error('خطأ في تحديث عملية الشراء:', error);
+                showToast(error.response?.data?.message || 'فشل في تحديث عملية الشراء', 'error');
+                throw error;
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        /**
+         * حذف عملية شراء
+         */
+        async function deletePurchase(purchaseId) {
+            try {
+                showLoading();
+                await axios.delete(`/purchases/${purchaseId}`);
+                purchases = purchases.filter(purchase => purchase._id !== purchaseId);
+                filteredPurchases = [...purchases];
+                updatePurchasesDisplay();
+                updateStatistics();
+                closeDeleteConfirmModal();
+                showToast('تم حذف عملية الشراء بنجاح', 'success');
+            } catch (error) {
+                console.error('خطأ في حذف عملية الشراء:', error);
+                showToast(error.response?.data?.message || 'فشل في حذف عملية الشراء', 'error');
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        // ===================================
+        // دوال عرض البيانات
+        // ===================================
+        
+        /**
+         * تحديث إحصائيات المشتريات
+         */
+        function updateStatistics() {
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth();
+            const currentYear = currentDate.getFullYear();
+            
+            // إجمالي المشتريات
+            document.getElementById('totalPurchases').textContent = purchases.length;
+            
+            // المشتريات المعلقة
+            const pendingCount = purchases.filter(p => p.status === 'pending').length;
+            document.getElementById('pendingPurchases').textContent = pendingCount;
+            
+            // إجمالي المبالغ هذا الشهر
+            const thisMonthTotal = purchases
+                .filter(p => {
+                    const purchaseDate = new Date(p.date);
+                    return purchaseDate.getMonth() === currentMonth && 
+                           purchaseDate.getFullYear() === currentYear;
+                })
+                .reduce((sum, p) => sum + (p.totalAmount || 0), 0);
+            
+            document.getElementById('totalAmount').textContent = thisMonthTotal.toLocaleString('ar-LY', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+            
+            // المبالغ المستحقة (غير مدفوعة)
+            const outstandingAmount = purchases
+                .filter(p => p.status !== 'paid')
+                .reduce((sum, p) => sum + ((p.totalAmount || 0) - (p.amountPaid || 0)), 0);
+            
+            document.getElementById('outstandingAmount').textContent = outstandingAmount.toLocaleString('ar-LY', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
             });
         }
         
-        // تحسين التمرير الناعم
-        if ("scrollBehavior" in document.documentElement.style) {
-            document.documentElement.style.scrollBehavior = "smooth";
+        /**
+         * تحديث قوائم الموردين المنسدلة
+         */
+        function updateSuppliersDropdown() {
+            const supplierSelects = [
+                document.getElementById('purchaseSupplier'),
+                document.getElementById('supplierFilter')
+            ];
+            
+            supplierSelects.forEach(select => {
+                if (select && select.id !== 'supplierFilter') {
+                    select.innerHTML = '<option value="">اختر مورد...</option>';
+                } else if (select) {
+                    const currentValue = select.value;
+                    select.innerHTML = '<option value="">جميع الموردين</option>';
+                    select.value = currentValue;
+                }
+                
+                suppliers.forEach(supplier => {
+                    const option = document.createElement('option');
+                    option.value = supplier._id;
+                    option.textContent = supplier.name;
+                    select.appendChild(option);
+                });
+            });
         }
         
-        // تحسين الأداء للأجهزة الضعيفة
-        if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
-            document.body.classList.add("low-performance");
+        /**
+         * تحديث عرض المشتريات
+         */
+        function updatePurchasesDisplay() {
+            updateDesktopTable();
+            updateMobileCards();
+            updatePagination();
         }
+        
+        /**
+         * تحديث الجدول للشاشات الكبيرة
+         */
+        function updateDesktopTable() {
+            const tbody = document.getElementById('purchasesTableBody');
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pagePurchases = filteredPurchases.slice(startIndex, endIndex);
+            
+            if (pagePurchases.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
+                            <i class="fas fa-shopping-cart text-4xl mb-4"></i>
+                            <div>لا توجد عمليات شراء</div>
+                            <div class="text-sm mt-2">قم بإضافة عملية شراء جديدة للبدء</div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tbody.innerHTML = pagePurchases.map(purchase => {
+                const supplier = suppliers.find(s => s._id === purchase.supplier);
+                const supplierName = supplier ? supplier.name : 'غير محدد';
+                
+                const statusClasses = {
+                    'pending': 'status-pending',
+                    'completed': 'status-completed',
+                    'cancelled': 'status-cancelled',
+                    'paid': 'status-paid',
+                    'partially_paid': 'status-partially_paid'
+                };
+                
+                const statusNames = {
+                    'pending': 'معلقة',
+                    'completed': 'مكتملة',
+                    'cancelled': 'ملغاة',
+                    'paid': 'مدفوعة',
+                    'partially_paid': 'مدفوعة جزئياً'
+                };
+                
+                return `
+                    <tr class="table-row hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <td class="px-6 py-4">
+                            <div class="text-sm font-medium text-gray-900 dark:text-white">
+                                ${purchase.purchaseNumber || 'غير محدد'}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">
+                            ${supplierName}
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                            ${purchase.date ? new Date(purchase.date).toLocaleDateString('ar-SA') : 'غير محدد'}
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">
+                            ${(purchase.totalAmount || 0).toFixed(2)} د.ل
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">
+                            ${(purchase.amountPaid || 0).toFixed(2)} د.ل
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="status-badge ${statusClasses[purchase.status] || 'status-pending'}">
+                                ${statusNames[purchase.status] || purchase.status || 'غير محدد'}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center space-x-2 space-x-reverse">
+                                <button onclick="editPurchase('${purchase._id}')" 
+                                        class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button onclick="showDeleteConfirm('${purchase._id}', '${purchase.purchaseNumber}')" 
+                                        class="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <button onclick="viewPurchase('${purchase._id}')" 
+                                        class="text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        /**
+         * تحديث البطاقات للشاشات الصغيرة
+         */
+        function updateMobileCards() {
+            const container = document.getElementById('purchasesCardsContainer');
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pagePurchases = filteredPurchases.slice(startIndex, endIndex);
+            
+            if (pagePurchases.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12">
+                        <i class="fas fa-shopping-cart text-4xl text-gray-400 mb-4"></i>
+                        <div class="text-gray-500 dark:text-gray-400">لا توجد عمليات شراء</div>
+                        <div class="text-sm text-gray-400 mt-2">قم بإضافة عملية شراء جديدة للبدء</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = pagePurchases.map(purchase => {
+                const supplier = suppliers.find(s => s._id === purchase.supplier);
+                const supplierName = supplier ? supplier.name : 'غير محدد';
+                
+                const statusClasses = {
+                    'pending': 'status-pending',
+                    'completed': 'status-completed',
+                    'cancelled': 'status-cancelled',
+                    'paid': 'status-paid',
+                    'partially_paid': 'status-partially_paid'
+                };
+                
+                const statusNames = {
+                    'pending': 'معلقة',
+                    'completed': 'مكتملة',
+                    'cancelled': 'ملغاة',
+                    'paid': 'مدفوعة',
+                    'partially_paid': 'مدفوعة جزئياً'
+                };
+                
+                return `
+                    <div class="purchase-card bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+                                    ${purchase.purchaseNumber || 'غير محدد'}
+                                </h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">
+                                    ${supplierName}
+                                </p>
+                            </div>
+                            <span class="status-badge ${statusClasses[purchase.status] || 'status-pending'}">
+                                ${statusNames[purchase.status] || purchase.status || 'غير محدد'}
+                            </span>
+                        </div>
+                        
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-calendar w-5 text-gray-400"></i>
+                                <span class="text-gray-600 dark:text-gray-300">
+                                    ${purchase.date ? new Date(purchase.date).toLocaleDateString('ar-SA') : 'غير محدد'}
+                                </span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-money-bill-wave w-5 text-gray-400"></i>
+                                <span class="text-gray-600 dark:text-gray-300">
+                                    ${(purchase.totalAmount || 0).toFixed(2)} د.ل
+                                </span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-credit-card w-5 text-gray-400"></i>
+                                <span class="text-gray-600 dark:text-gray-300">
+                                    مدفوع: ${(purchase.amountPaid || 0).toFixed(2)} د.ل
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between">
+                            <button onclick="editPurchase('${purchase._id}')" 
+                                    class="flex items-center px-3 py-2 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors">
+                                <i class="fas fa-edit mr-2"></i>
+                                تعديل
+                            </button>
+                            <button onclick="viewPurchase('${purchase._id}')" 
+                                    class="flex items-center px-3 py-2 text-green-600 hover:bg-green-50 dark:hover:bg-green-900/20 rounded-lg transition-colors">
+                                <i class="fas fa-eye mr-2"></i>
+                                عرض
+                            </button>
+                            <button onclick="showDeleteConfirm('${purchase._id}', '${purchase.purchaseNumber}')" 
+                                    class="flex items-center px-3 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors">
+                                <i class="fas fa-trash mr-2"></i>
+                                حذف
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        /**
+         * تحديث عناصر التصفح (Pagination)
+         */
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredPurchases.length / itemsPerPage);
+            const startItem = (currentPage - 1) * itemsPerPage + 1;
+            const endItem = Math.min(currentPage * itemsPerPage, filteredPurchases.length);
+            
+            // تحديث معلومات التصفح
+            document.getElementById('paginationInfo').textContent = 
+                `عرض ${startItem}-${endItem} من ${filteredPurchases.length} عملية شراء`;
+            
+            document.getElementById('purchasesCount').textContent = 
+                `${filteredPurchases.length} عملية شراء`;
+            
+            // تحديث أزرار التصفح
+            const paginationControls = document.getElementById('paginationControls');
+            let paginationHTML = '';
+            
+            // زر السابق
+            if (currentPage > 1) {
+                paginationHTML += `
+                    <button onclick="changePage(${currentPage - 1})" 
+                            class="px-3 py-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                `;
+            }
+            
+            // أرقام الصفحات
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === currentPage) {
+                    paginationHTML += `
+                        <button class="px-3 py-2 bg-primary-500 text-white rounded-lg">
+                            ${i}
+                        </button>
+                    `;
+                } else {
+                    paginationHTML += `
+                        <button onclick="changePage(${i})" 
+                                class="px-3 py-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            ${i}
+                        </button>
+                    `;
+                }
+            }
+            
+            // زر التالي
+            if (currentPage < totalPages) {
+                paginationHTML += `
+                    <button onclick="changePage(${currentPage + 1})" 
+                            class="px-3 py-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                `;
+            }
+            
+            paginationControls.innerHTML = paginationHTML;
+        }
+        
+        // ===================================
+        // دوال البحث والفلترة
+        // ===================================
+        
+        /**
+         * تطبيق الفلاتر والبحث
+         */
+        function applyFilters() {
+            const searchTerm = document.getElementById('mainSearchInput').value.toLowerCase();
+            const supplierFilter = document.getElementById('supplierFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+            
+            filteredPurchases = purchases.filter(purchase => {
+                // البحث النصي
+                const supplier = suppliers.find(s => s._id === purchase.supplier);
+                const supplierName = supplier ? supplier.name.toLowerCase() : '';
+                
+                const matchesSearch = !searchTerm || 
+                    purchase.purchaseNumber?.toLowerCase().includes(searchTerm) ||
+                    supplierName.includes(searchTerm);
+                
+                // فلتر المورد
+                const matchesSupplier = !supplierFilter || purchase.supplier === supplierFilter;
+                
+                // فلتر الحالة
+                const matchesStatus = !statusFilter || purchase.status === statusFilter;
+                
+                return matchesSearch && matchesSupplier && matchesStatus;
+            });
+            
+            currentPage = 1; // إعادة تعيين الصفحة الحالية
+            updatePurchasesDisplay();
+        }
+        
+        /**
+         * إعادة تعيين الفلاتر
+         */
+        function resetFilters() {
+            document.getElementById('mainSearchInput').value = '';
+            document.getElementById('supplierFilter').value = '';
+            document.getElementById('statusFilter').value = '';
+            document.getElementById('headerSearchInput').value = '';
+            
+            filteredPurchases = [...purchases];
+            currentPage = 1;
+            updatePurchasesDisplay();
+            showToast('تم إعادة تعيين الفلاتر', 'info');
+        }
+        
+        // ===================================
+        // دوال إدارة النماذج
+        // ===================================
+        
+        /**
+         * فتح نافذة إضافة عملية شراء جديدة
+         */
+        function openAddPurchaseModal() {
+            document.getElementById('purchaseForm').reset();
+            document.getElementById('purchaseId').value = '';
+            document.getElementById('modalTitle').textContent = 'إضافة عملية شراء جديدة';
+            document.getElementById('saveBtnText').textContent = 'حفظ عملية الشراء';
+            currentPurchaseId = null;
+            
+            // تعيين تاريخ اليوم
+            document.getElementById('purchaseDate').value = new Date().toISOString().split('T')[0];
+            
+            // إعادة تعيين حاوية المنتجات
+            document.getElementById('productsContainer').innerHTML = '';
+            addProductRow();
+            
+            clearFormErrors();
+            document.getElementById('purchaseModal').classList.remove('hidden');
+        }
+        
+        /**
+         * فتح نافذة تعديل عملية شراء
+         */
+        function editPurchase(purchaseId) {
+            const purchase = purchases.find(p => p._id === purchaseId);
+            if (!purchase) {
+                showToast('عملية الشراء غير موجودة', 'error');
+                return;
+            }
+            
+            // ملء النموذج ببيانات عملية الشراء
+            document.getElementById('purchaseId').value = purchase._id;
+            document.getElementById('purchaseSupplier').value = purchase.supplier || '';
+            document.getElementById('purchaseDate').value = purchase.date ? purchase.date.split('T')[0] : '';
+            document.getElementById('taxAmount').value = purchase.taxAmount || '';
+            document.getElementById('purchaseStatus').value = purchase.status || 'pending';
+            document.getElementById('purchaseNotes').value = purchase.notes || '';
+            
+            // تحميل المنتجات
+            document.getElementById('productsContainer').innerHTML = '';
+            if (purchase.items && purchase.items.length > 0) {
+                purchase.items.forEach(item => {
+                    addProductRow(item);
+                });
+            } else {
+                addProductRow();
+            }
+            
+            calculateTotal();
+            
+            document.getElementById('modalTitle').textContent = 'تعديل عملية شراء';
+            document.getElementById('saveBtnText').textContent = 'حفظ التعديلات';
+            currentPurchaseId = purchaseId;
+            clearFormErrors();
+            document.getElementById('purchaseModal').classList.remove('hidden');
+        }
+        
+        /**
+         * عرض تفاصيل عملية شراء
+         */
+        function viewPurchase(purchaseId) {
+            const purchase = purchases.find(p => p._id === purchaseId);
+            if (!purchase) {
+                showToast('عملية الشراء غير موجودة', 'error');
+                return;
+            }
+            
+            // يمكن إضافة نافذة منفصلة لعرض التفاصيل
+            showToast(`عرض تفاصيل ${purchase.purchaseNumber}`, 'info');
+        }
+        
+        /**
+         * إغلاق نافذة عملية الشراء
+         */
+        function closePurchaseModal() {
+            document.getElementById('purchaseModal').classList.add('hidden');
+            document.getElementById('purchaseForm').reset();
+            currentPurchaseId = null;
+            clearFormErrors();
+        }
+        
+        /**
+         * إظهار نافذة تأكيد الحذف
+         */
+        function showDeleteConfirm(purchaseId, purchaseNumber) {
+            currentPurchaseId = purchaseId;
+            document.getElementById('deletePurchaseNumber').textContent = purchaseNumber;
+            document.getElementById('deleteConfirmModal').classList.remove('hidden');
+        }
+        
+        /**
+         * إغلاق نافذة تأكيد الحذف
+         */
+        function closeDeleteConfirmModal() {
+            document.getElementById('deleteConfirmModal').classList.add('hidden');
+            currentPurchaseId = null;
+        }
+        
+        /**
+         * تنظيف رسائل خطأ النموذج
+         */
+        function clearFormErrors() {
+            const errorElements = document.querySelectorAll('[id$="Error"]');
+            errorElements.forEach(element => {
+                element.classList.add('hidden');
+                element.textContent = '';
+            });
+            
+            const inputs = document.querySelectorAll('#purchaseForm input, #purchaseForm select, #purchaseForm textarea');
+            inputs.forEach(input => {
+                input.classList.remove('border-red-500');
+            });
+        }
+        
+        /**
+         * عرض خطأ في حقل معين
+         */
+        function showFieldError(fieldName, message) {
+            const field = document.getElementById(fieldName);
+            const errorElement = document.getElementById(fieldName + 'Error');
+            
+            if (field) {
+                field.classList.add('border-red-500');
+            }
+            
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.classList.remove('hidden');
+            }
+        }
+        
+        // ===================================
+        // دوال إدارة المنتجات في النموذج
+        // ===================================
+        
+        /**
+         * إضافة صف منتج جديد
+         */
+        function addProductRow(item = null) {
+            const container = document.getElementById('productsContainer');
+            const index = container.children.length;
+            
+            const productRow = document.createElement('div');
+            productRow.className = 'product-item p-4 rounded-lg border border-gray-200 dark:border-gray-600';
+            
+            productRow.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">المنتج *</label>
+                        <select name="product_${index}" class="product-select w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white" required>
+                            <option value="">اختر منتج...</option>
+                            ${products.map(product => `
+                                <option value="${product._id}" data-price="${product.price}" ${item && item.product === product._id ? 'selected' : ''}>
+                                    ${product.name} - ${product.price} د.ل
+                                </option>
+                            `).join('')}
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">الكمية *</label>
+                        <input type="number" name="quantity_${index}" min="1" step="1" value="${item ? item.quantity : 1}" class="quantity-input w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">سعر الوحدة</label>
+                        <input type="number" name="price_${index}" min="0" step="0.01" value="${item ? item.price : ''}" class="price-input w-full px-3 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                    </div>
+                    <div class="flex items-end">
+                        <button type="button" onclick="removeProductRow(this)" class="w-full px-3 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors">
+                            <i class="fas fa-trash mr-2"></i>
+                            حذف
+                        </button>
+                    </div>
+                </div>
+                <div class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    المجموع الفرعي: <span class="subtotal font-medium">0.00 د.ل</span>
+                </div>
+            `;
+            
+            container.appendChild(productRow);
+            
+            // إضافة مستمعات الأحداث
+            const productSelect = productRow.querySelector('.product-select');
+            const quantityInput = productRow.querySelector('.quantity-input');
+            const priceInput = productRow.querySelector('.price-input');
+            
+            productSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                if (selectedOption.dataset.price) {
+                    priceInput.value = selectedOption.dataset.price;
+                }
+                calculateRowTotal(productRow);
+            });
+            
+            quantityInput.addEventListener('input', () => calculateRowTotal(productRow));
+            priceInput.addEventListener('input', () => calculateRowTotal(productRow));
+            
+            // حساب المجموع الفرعي الأولي
+            calculateRowTotal(productRow);
+        }
+        
+        /**
+         * حذف صف منتج
+         */
+        function removeProductRow(button) {
+            const container = document.getElementById('productsContainer');
+            if (container.children.length > 1) {
+                button.closest('.product-item').remove();
+                calculateTotal();
+            } else {
+                showToast('يجب أن يكون هناك منتج واحد على الأقل', 'warning');
+            }
+        }
+        
+        /**
+         * حساب المجموع الفرعي لصف منتج
+         */
+        function calculateRowTotal(row) {
+            const quantity = parseFloat(row.querySelector('.quantity-input').value) || 0;
+            const price = parseFloat(row.querySelector('.price-input').value) || 0;
+            const subtotal = quantity * price;
+            
+            row.querySelector('.subtotal').textContent = `${subtotal.toFixed(2)} د.ل`;
+            calculateTotal();
+        }
+        
+        /**
+         * حساب المجموع الإجمالي
+         */
+        function calculateTotal() {
+            const productRows = document.querySelectorAll('.product-item');
+            let subtotalSum = 0;
+            
+            productRows.forEach(row => {
+                const quantity = parseFloat(row.querySelector('.quantity-input').value) || 0;
+                const price = parseFloat(row.querySelector('.price-input').value) || 0;
+                subtotalSum += quantity * price;
+            });
+            
+            const taxAmount = parseFloat(document.getElementById('taxAmount').value) || 0;
+            const total = subtotalSum + taxAmount;
+            
+            document.getElementById('totalAmount').value = total.toFixed(2);
+        }
+        
+        /**
+         * التحقق من صحة النموذج
+         */
+        function validateForm(formData) {
+            clearFormErrors();
+            let isValid = true;
+            
+            // التحقق من المورد
+            if (!formData.supplier) {
+                showFieldError('purchaseSupplier', 'المورد مطلوب');
+                isValid = false;
+            }
+            
+            // التحقق من التاريخ
+            if (!formData.purchaseDate) {
+                showFieldError('purchaseDate', 'تاريخ الشراء مطلوب');
+                isValid = false;
+            }
+            
+            // التحقق من المنتجات
+            const productRows = document.querySelectorAll('.product-item');
+            if (productRows.length === 0) {
+                showToast('يجب إضافة منتج واحد على الأقل', 'error');
+                isValid = false;
+            }
+            
+            // التحقق من كل منتج
+            productRows.forEach((row, index) => {
+                const productSelect = row.querySelector('.product-select');
+                const quantityInput = row.querySelector('.quantity-input');
+                const priceInput = row.querySelector('.price-input');
+                
+                if (!productSelect.value) {
+                    productSelect.classList.add('border-red-500');
+                    isValid = false;
+                }
+                
+                if (!quantityInput.value || quantityInput.value <= 0) {
+                    quantityInput.classList.add('border-red-500');
+                    isValid = false;
+                }
+                
+                if (!priceInput.value || priceInput.value <= 0) {
+                    priceInput.classList.add('border-red-500');
+                    isValid = false;
+                }
+            });
+            
+            return isValid;
+        }
+        
+        // ===================================
+        // دوال مساعدة إضافية
+        // ===================================
+        
+        /**
+         * تغيير الصفحة الحالية
+         */
+        function changePage(page) {
+            currentPage = page;
+            updatePurchasesDisplay();
+        }
+        
+        /**
+         * تصدير قائمة المشتريات
+         */
+        function exportPurchases() {
+            // تحويل البيانات إلى CSV
+            const headers = ['رقم الشراء', 'المورد', 'التاريخ', 'المبلغ الإجمالي', 'المبلغ المدفوع', 'الحالة'];
+            const csvContent = [
+                headers.join(','),
+                ...filteredPurchases.map(purchase => {
+                    const supplier = suppliers.find(s => s._id === purchase.supplier);
+                    const supplierName = supplier ? supplier.name : 'غير محدد';
+                    
+                    return [
+                        purchase.purchaseNumber || '',
+                        supplierName,
+                        purchase.date ? new Date(purchase.date).toLocaleDateString('ar-SA') : '',
+                        purchase.totalAmount || '',
+                        purchase.amountPaid || '',
+                        purchase.status || ''
+                    ].join(',');
+                })
+            ].join('\n');
+            
+            // إنشاء رابط التحميل
+            const blob = new Blob(['\ufeff' + csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `purchases-${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showToast('تم تصدير قائمة المشتريات بنجاح', 'success');
+        }
+        
+        /**
+         * دالة التأخير لتحسين الأداء
+         */
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        // ===================================
+        // معالجات الأحداث
+        // ===================================
+        
+        // إرسال نموذج عملية الشراء
+        document.getElementById('purchaseForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            // جمع بيانات المنتجات
+            const items = [];
+            const productRows = document.querySelectorAll('.product-item');
+            
+            productRows.forEach((row, index) => {
+                const productSelect = row.querySelector('.product-select');
+                const quantityInput = row.querySelector('.quantity-input');
+                const priceInput = row.querySelector('.price-input');
+                
+                if (productSelect.value) {
+                    items.push({
+                        product: productSelect.value,
+                        quantity: parseInt(quantityInput.value),
+                        price: parseFloat(priceInput.value)
+                    });
+                }
+            });
+            
+            const purchaseData = {
+                supplier: formData.get('supplier'),
+                date: formData.get('purchaseDate'),
+                items: items,
+                taxAmount: parseFloat(formData.get('taxAmount')) || 0,
+                status: formData.get('status'),
+                notes: formData.get('notes')
+            };
+            
+            if (!validateForm(purchaseData)) {
+                return;
+            }
+            
+            const saveBtn = document.getElementById('saveBtn');
+            showButtonLoading(saveBtn);
+            
+            try {
+                if (currentPurchaseId) {
+                    await updatePurchase(currentPurchaseId, purchaseData);
+                } else {
+                    await createPurchase(purchaseData);
+                }
+            } catch (error) {
+                // معالجة أخطاء الخادم
+                if (error.response?.data?.errors) {
+                    Object.keys(error.response.data.errors).forEach(field => {
+                        showFieldError('purchase' + field.charAt(0).toUpperCase() + field.slice(1), 
+                                     error.response.data.errors[field]);
+                    });
+                }
+            } finally {
+                hideButtonLoading(saveBtn);
+            }
+        });
+        
+        // البحث الفوري
+        document.getElementById('mainSearchInput').addEventListener('input', debounce(applyFilters, 300));
+        document.getElementById('headerSearchInput').addEventListener('input', function() {
+            document.getElementById('mainSearchInput').value = this.value;
+            debounce(applyFilters, 300)();
+        });
+        
+        // فلاتر التغيير
+        document.getElementById('supplierFilter').addEventListener('change', applyFilters);
+        document.getElementById('statusFilter').addEventListener('change', applyFilters);
+        
+        // مستمع لحساب المجموع عند تغيير الضريبة
+        document.getElementById('taxAmount').addEventListener('input', calculateTotal);
+        
+        // أزرار الإجراءات
+        document.getElementById('addPurchaseBtn').addEventListener('click', openAddPurchaseModal);
+        document.getElementById('addProductBtn').addEventListener('click', () => addProductRow());
+        document.getElementById('resetFiltersBtn').addEventListener('click', resetFilters);
+        document.getElementById('exportPurchasesBtn').addEventListener('click', exportPurchases);
+        
+        // أزرار النوافذ المنبثقة
+        document.getElementById('closeModalBtn').addEventListener('click', closePurchaseModal);
+        document.getElementById('cancelBtn').addEventListener('click', closePurchaseModal);
+        document.getElementById('cancelDeleteBtn').addEventListener('click', closeDeleteConfirmModal);
+        document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+            if (currentPurchaseId) {
+                deletePurchase(currentPurchaseId);
+            }
+        });
+        
+        // إغلاق النوافذ المنبثقة عند النقر خارجها
+        document.getElementById('purchaseModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePurchaseModal();
+            }
+        });
+        
+        document.getElementById('deleteConfirmModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDeleteConfirmModal();
+            }
+        });
+        
+        // تسجيل الخروج
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                localStorage.removeItem('token');
+                showToast('تم تسجيل الخروج بنجاح', 'success');
+                setTimeout(() => {
+                    window.location.href = '/login.html';
+                }, 2000);
+            }
+        });
+        
+        // ===================================
+        // تهيئة التطبيق عند تحميل الصفحة
+        // ===================================
+        
+        document.addEventListener('DOMContentLoaded', async function() {
+            // التحقق من وجود توكن المصادقة
+            if (!localStorage.getItem('token')) {
+                window.location.href = '/login.html';
+                return;
+            }
+            
+            // تهيئة الوضع المظلم
+            initializeDarkMode();
+            
+            // تهيئة القائمة الجانبية
+            initializeSidebar();
+            
+            try {
+                // تحميل البيانات بالتوازي
+                await Promise.all([
+                    fetchSuppliers(),
+                    fetchProducts(),
+                    fetchPurchases()
+                ]);
+            } catch (error) {
+                console.error('خطأ في تحميل البيانات:', error);
+                showToast('فشل في تحميل بعض البيانات', 'error');
+            }
+            
+            // تحسين الأداء
+            if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+                document.body.classList.add('low-performance');
+            }
+            
+            // تحسين تحميل الخطوط
+            if ('fonts' in document) {
+                document.fonts.ready.then(() => {
+                    document.body.classList.add('fonts-loaded');
+                });
+            }
+            
+            // إظهار رسالة ترحيب
+            setTimeout(() => {
+                showToast('مرحباً بك في إدارة المشتريات', 'success');
+            }, 1000);
+            
+            console.log('تم تحميل صفحة إدارة المشتريات بنجاح');
+        });
+        
+        // معالج الأخطاء العام
+        window.addEventListener('error', function(e) {
+            console.error('خطأ في التطبيق:', e.error);
+            showToast('حدث خطأ غير متوقع. يرجى إعادة تحميل الصفحة.', 'error');
+        });
+        
+        // حفظ حالة التطبيق قبل إغلاق الصفحة
+        window.addEventListener('beforeunload', function() {
+            localStorage.setItem('lastVisit', new Date().toISOString());
+        });
+        
+        // تحديث التوكن قبل انتهاء صلاحيته
+        setInterval(() => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                // يمكن إضافة منطق تحديث التوكن هنا
+                console.log('فحص صحة التوكن...');
+            }
+        }, 30 * 60 * 1000); // كل 30 دقيقة
     </script>
 </body>
 </html>
-

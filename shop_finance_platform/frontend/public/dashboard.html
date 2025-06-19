@@ -164,16 +164,6 @@
             animation-duration: 0.1s !important;
             transition-duration: 0.1s !important;
         }
-
-        /* إخفاء المحتوى أثناء التحميل */
-        .loading-content {
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-        
-        .content-loaded {
-            opacity: 1;
-        }
     </style>
 </head>
 
@@ -298,7 +288,7 @@
                         <!-- معلومات الصفحة -->
                         <div>
                             <h1 class="text-2xl font-bold text-gray-800 dark:text-white">لوحة التحكم</h1>
-                            <p class="text-sm text-gray-500 dark:text-gray-400" id="shopWelcome">نظرة عامة على أداء محلك</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">نظرة عامة على أداء محلك</p>
                         </div>
                     </div>
                     
@@ -320,18 +310,18 @@
                         <div class="relative">
                             <button id="notificationsBtn" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-400 relative">
                                 <i class="fas fa-bell text-lg"></i>
-                                <span id="notificationCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
+                                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
                             </button>
                         </div>
                         
                         <!-- معلومات المستخدم -->
                         <div class="flex items-center space-x-3 space-x-reverse">
                             <div class="hidden md:block text-right">
-                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300" id="userName">جاري التحميل...</p>
-                                <p class="text-xs text-gray-500 dark:text-gray-400" id="userRole">جاري التحميل...</p>
+                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">أحمد محمد</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">مدير المحل</p>
                             </div>
                             <div class="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
-                                <span class="text-white font-medium" id="userInitial">؟</span>
+                                <span class="text-white font-medium">أ</span>
                             </div>
                         </div>
                         
@@ -347,7 +337,7 @@
         <!-- ===================================
              المحتوى الرئيسي للوحة التحكم
              =================================== -->
-        <main class="p-6 loading-content" id="mainContent">
+        <main class="p-6">
             <!-- بطاقات الإحصائيات الرئيسية المحسنة -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <!-- إجمالي المبيعات -->
@@ -355,10 +345,10 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-blue-100 text-sm font-medium">إجمالي المبيعات اليوم</p>
-                            <p class="text-3xl font-bold mt-2" id="todaySales">0.00 د.ل</p>
-                            <p class="text-blue-100 text-sm mt-1" id="salesGrowth">
+                            <p class="text-3xl font-bold mt-2" id="todaySales">2,450.00 د.ل</p>
+                            <p class="text-blue-100 text-sm mt-1">
                                 <i class="fas fa-arrow-up mr-1"></i>
-                                جاري الحساب...
+                                +12.5% من الأمس
                             </p>
                         </div>
                         <div class="bg-white bg-opacity-20 p-3 rounded-lg">
@@ -372,10 +362,10 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-green-100 text-sm font-medium">عدد الطلبات اليوم</p>
-                            <p class="text-3xl font-bold mt-2" id="todayOrders">0</p>
-                            <p class="text-green-100 text-sm mt-1" id="ordersGrowth">
+                            <p class="text-3xl font-bold mt-2" id="todayOrders">47</p>
+                            <p class="text-green-100 text-sm mt-1">
                                 <i class="fas fa-arrow-up mr-1"></i>
-                                جاري الحساب...
+                                +8.2% من الأمس
                             </p>
                         </div>
                         <div class="bg-white bg-opacity-20 p-3 rounded-lg">
@@ -389,10 +379,10 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-purple-100 text-sm font-medium">إجمالي المنتجات</p>
-                            <p class="text-3xl font-bold mt-2" id="totalProducts">0</p>
-                            <p class="text-purple-100 text-sm mt-1" id="lowStockAlert">
+                            <p class="text-3xl font-bold mt-2" id="totalProducts">1,247</p>
+                            <p class="text-purple-100 text-sm mt-1">
                                 <i class="fas fa-exclamation-triangle mr-1"></i>
-                                جاري التحميل...
+                                23 منتج نفد مخزونه
                             </p>
                         </div>
                         <div class="bg-white bg-opacity-20 p-3 rounded-lg">
@@ -406,10 +396,10 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-orange-100 text-sm font-medium">إجمالي العملاء</p>
-                            <p class="text-3xl font-bold mt-2" id="totalCustomers">0</p>
-                            <p class="text-orange-100 text-sm mt-1" id="newCustomers">
+                            <p class="text-3xl font-bold mt-2" id="totalCustomers">856</p>
+                            <p class="text-orange-100 text-sm mt-1">
                                 <i class="fas fa-user-plus mr-1"></i>
-                                جاري التحميل...
+                                5 عملاء جدد هذا الأسبوع
                             </p>
                         </div>
                         <div class="bg-white bg-opacity-20 p-3 rounded-lg">
@@ -428,8 +418,8 @@
                     <div class="flex items-center justify-between mb-6">
                         <h3 class="text-lg font-semibold text-gray-800 dark:text-white">مبيعات الأسبوع الماضي</h3>
                         <div class="flex space-x-2 space-x-reverse">
-                            <button id="weeklyChart" class="px-3 py-1 text-sm bg-primary-100 text-primary-700 rounded-lg">أسبوعي</button>
-                            <button id="monthlyChart" class="px-3 py-1 text-sm text-gray-500 hover:bg-gray-100 rounded-lg">شهري</button>
+                            <button class="px-3 py-1 text-sm bg-primary-100 text-primary-700 rounded-lg">أسبوعي</button>
+                            <button class="px-3 py-1 text-sm text-gray-500 hover:bg-gray-100 rounded-lg">شهري</button>
                         </div>
                     </div>
                     <div class="chart-container">
@@ -441,7 +431,7 @@
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 slide-up" style="animation-delay: 0.2s">
                     <div class="flex items-center justify-between mb-6">
                         <h3 class="text-lg font-semibold text-gray-800 dark:text-white">الفئات الأكثر مبيعاً</h3>
-                        <button class="text-primary-600 hover:text-primary-700 text-sm" onclick="window.location.href='#products'">عرض التفاصيل</button>
+                        <button class="text-primary-600 hover:text-primary-700 text-sm">عرض التفاصيل</button>
                     </div>
                     <div class="chart-container">
                         <canvas id="categoriesChart"></canvas>
@@ -457,8 +447,8 @@
                 <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm slide-up">
                     <div class="p-6 border-b border-gray-200 dark:border-gray-700">
                         <div class="flex items-center justify-between">
-                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">الفواتير الأخيرة</h3>
-                            <a href="#invoices" class="text-primary-600 hover:text-primary-700 text-sm">عرض الكل</a>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">المعاملات الأخيرة</h3>
+                            <a href="#transactions" class="text-primary-600 hover:text-primary-700 text-sm">عرض الكل</a>
                         </div>
                     </div>
                     <div class="overflow-x-auto">
@@ -472,13 +462,8 @@
                                     <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">التاريخ</th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700" id="invoicesTableBody">
-                                <tr>
-                                    <td colspan="5" class="px-6 py-4 text-center text-gray-500">
-                                        <div class="loading-spinner mx-auto"></div>
-                                        <p class="mt-2">جاري تحميل البيانات...</p>
-                                    </td>
-                                </tr>
+                            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700" id="transactionsTableBody">
+                                <!-- سيتم ملؤها بواسطة JavaScript -->
                             </tbody>
                         </table>
                     </div>
@@ -490,19 +475,19 @@
                     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 slide-up" style="animation-delay: 0.4s">
                         <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">إجراءات سريعة</h3>
                         <div class="space-y-3">
-                            <button onclick="window.location.href='#products'" class="quick-action-btn w-full flex items-center space-x-3 space-x-reverse p-3 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-900/30 smooth-transition">
+                            <button class="quick-action-btn w-full flex items-center space-x-3 space-x-reverse p-3 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 rounded-lg hover:bg-primary-100 dark:hover:bg-primary-900/30 smooth-transition">
                                 <i class="fas fa-plus w-5"></i>
                                 <span>إضافة منتج جديد</span>
                             </button>
-                            <button onclick="window.location.href='#invoices'" class="quick-action-btn w-full flex items-center space-x-3 space-x-reverse p-3 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 smooth-transition">
+                            <button class="quick-action-btn w-full flex items-center space-x-3 space-x-reverse p-3 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 smooth-transition">
                                 <i class="fas fa-file-invoice w-5"></i>
                                 <span>إنشاء فاتورة</span>
                             </button>
-                            <button onclick="window.location.href='#customers'" class="quick-action-btn w-full flex items-center space-x-3 space-x-reverse p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 smooth-transition">
+                            <button class="quick-action-btn w-full flex items-center space-x-3 space-x-reverse p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 smooth-transition">
                                 <i class="fas fa-user-plus w-5"></i>
                                 <span>إضافة عميل</span>
                             </button>
-                            <button onclick="window.location.href='#reports'" class="quick-action-btn w-full flex items-center space-x-3 space-x-reverse p-3 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400 rounded-lg hover:bg-orange-100 dark:hover:bg-orange-900/30 smooth-transition">
+                            <button class="quick-action-btn w-full flex items-center space-x-3 space-x-reverse p-3 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-400 rounded-lg hover:bg-orange-100 dark:hover:bg-orange-900/30 smooth-transition">
                                 <i class="fas fa-chart-bar w-5"></i>
                                 <span>عرض التقارير</span>
                             </button>
@@ -513,13 +498,10 @@
                     <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 slide-up" style="animation-delay: 0.6s">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="text-lg font-semibold text-gray-800 dark:text-white">تنبيهات المخزون</h3>
-                            <span id="lowStockCount" class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full hidden">0</span>
+                            <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">23</span>
                         </div>
                         <div class="space-y-3" id="lowStockProducts">
-                            <div class="text-center text-gray-500 py-4">
-                                <div class="loading-spinner mx-auto mb-2"></div>
-                                <p>جاري تحميل تنبيهات المخزون...</p>
-                            </div>
+                            <!-- سيتم ملؤها بواسطة JavaScript -->
                         </div>
                     </div>
                 </div>
@@ -541,9 +523,7 @@
                 </div>
             </div>
             <div class="p-4 space-y-3 overflow-y-auto custom-scrollbar" style="max-height: 300px;" id="notificationsList">
-                <div class="text-center text-gray-500 py-4">
-                    <p>لا توجد إشعارات جديدة</p>
-                </div>
+                <!-- سيتم ملؤها بواسطة JavaScript -->
             </div>
         </div>
     </div>
@@ -564,315 +544,9 @@
     <div id="toastContainer" class="fixed top-4 left-4 z-50 space-y-2"></div>
     
     <!-- ===================================
-         JavaScript للوظائف التفاعلية والربط مع APIs
+         JavaScript للوظائف التفاعلية
          =================================== -->
     <script>
-        // ===================================
-        // إعدادات API والمصادقة
-        // ===================================
-        
-        const API_BASE_URL = 'http://localhost:5000/api'; // تعديل حسب عنوان الخادم
-        
-        // دالة للحصول على التوكن من localStorage
-        function getToken() {
-            return localStorage.getItem('token');
-        }
-        
-        // دالة للتحقق من صحة الجلسة
-        async function checkAuth() {
-            const token = getToken();
-            if (!token) {
-                window.location.href = '/login.html';
-                return false;
-            }
-            
-            try {
-                const response = await fetch(`${API_BASE_URL}/users/me`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    }
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Authentication failed');
-                }
-                
-                const userData = await response.json();
-                if (userData.success) {
-                    // حفظ بيانات المستخدم
-                    localStorage.setItem('userData', JSON.stringify(userData.data));
-                    updateUserInfo(userData.data);
-                    return userData.data;
-                } else {
-                    throw new Error('Invalid user data');
-                }
-            } catch (error) {
-                console.error('Authentication error:', error);
-                localStorage.removeItem('token');
-                localStorage.removeItem('userData');
-                window.location.href = '/login.html';
-                return false;
-            }
-        }
-        
-        // دالة مساعدة لإجراء طلبات API
-        async function apiRequest(endpoint, options = {}) {
-            const token = getToken();
-            
-            const config = {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                    ...options.headers
-                },
-                ...options
-            };
-            
-            try {
-                const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
-                
-                // التحقق من حالة المصادقة
-                if (response.status === 401) {
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('userData');
-                    window.location.href = '/login.html';
-                    return null;
-                }
-                
-                const data = await response.json();
-                
-                if (!response.ok) {
-                    throw new Error(data.error || `HTTP error! status: ${response.status}`);
-                }
-                
-                return data;
-            } catch (error) {
-                console.error('API Request Error:', error);
-                showToast(`خطأ في الطلب: ${error.message}`, 'error');
-                throw error;
-            }
-        }
-        
-        // تحديث معلومات المستخدم في الواجهة
-        function updateUserInfo(userData) {
-            const userNameElement = document.getElementById('userName');
-            const userRoleElement = document.getElementById('userRole');
-            const userInitialElement = document.getElementById('userInitial');
-            const shopWelcomeElement = document.getElementById('shopWelcome');
-            
-            if (userNameElement) userNameElement.textContent = userData.name;
-            if (userRoleElement) {
-                const roleText = {
-                    'owner': 'مالك المحل',
-                    'manager': 'مدير',
-                    'employee': 'موظف'
-                }[userData.role] || userData.role;
-                userRoleElement.textContent = roleText;
-            }
-            if (userInitialElement) {
-                userInitialElement.textContent = userData.name.charAt(0);
-            }
-            if (shopWelcomeElement && userData.shop) {
-                shopWelcomeElement.textContent = `نظرة عامة على أداء ${userData.shop.name || 'محلك'}`;
-            }
-        }
-        
-        // ===================================
-        // دوال جلب البيانات من APIs
-        // ===================================
-        
-        // جلب إحصائيات المبيعات
-        async function fetchSalesStats() {
-            try {
-                const today = new Date();
-                const yesterday = new Date(today);
-                yesterday.setDate(yesterday.getDate() - 1);
-                
-                const todayStr = today.toISOString().split('T')[0];
-                const yesterdayStr = yesterday.toISOString().split('T')[0];
-                
-                // جلب إحصائيات المعاملات
-                const statsResponse = await apiRequest('/transactions/stats');
-                const transactionsResponse = await apiRequest(`/transactions?startDate=${todayStr}&endDate=${todayStr}`);
-                
-                if (statsResponse && transactionsResponse) {
-                    const todaySales = transactionsResponse.data ? 
-                        transactionsResponse.data
-                            .filter(t => t.type === 'income')
-                            .reduce((sum, t) => sum + t.amount, 0) : 0;
-                    
-                    const todayOrders = transactionsResponse.data ? 
-                        transactionsResponse.data.filter(t => t.type === 'income').length : 0;
-                    
-                    // تحديث العناصر في الواجهة
-                    document.getElementById('todaySales').textContent = `${todaySales.toFixed(2)} د.ل`;
-                    document.getElementById('todayOrders').textContent = todayOrders.toString();
-                    
-                    // حساب نسب النمو (محاكاة)
-                    const salesGrowth = Math.random() * 20 - 5; // نسبة عشوائية بين -5% و 15%
-                    const ordersGrowth = Math.random() * 15;
-                    
-                    document.getElementById('salesGrowth').innerHTML = `
-                        <i class="fas fa-arrow-${salesGrowth >= 0 ? 'up' : 'down'} mr-1"></i>
-                        ${salesGrowth >= 0 ? '+' : ''}${salesGrowth.toFixed(1)}% من الأمس
-                    `;
-                    
-                    document.getElementById('ordersGrowth').innerHTML = `
-                        <i class="fas fa-arrow-up mr-1"></i>
-                        +${ordersGrowth.toFixed(1)}% من الأمس
-                    `;
-                }
-            } catch (error) {
-                console.error('Error fetching sales stats:', error);
-            }
-        }
-        
-        // جلب إحصائيات المنتجات
-        async function fetchProductsStats() {
-            try {
-                const productsResponse = await apiRequest('/products');
-                
-                if (productsResponse && productsResponse.data) {
-                    const products = productsResponse.data;
-                    const totalProducts = products.length;
-                    const lowStockProducts = products.filter(p => p.stockQuantity <= 10);
-                    
-                    document.getElementById('totalProducts').textContent = totalProducts.toString();
-                    document.getElementById('lowStockAlert').innerHTML = `
-                        <i class="fas fa-exclamation-triangle mr-1"></i>
-                        ${lowStockProducts.length} منتج نفد مخزونه
-                    `;
-                    
-                    // تحديث قائمة المنتجات منخفضة المخزون
-                    updateLowStockProducts(lowStockProducts);
-                }
-            } catch (error) {
-                console.error('Error fetching products stats:', error);
-            }
-        }
-        
-        // جلب إحصائيات العملاء
-        async function fetchCustomersStats() {
-            try {
-                const customersResponse = await apiRequest('/customers');
-                
-                if (customersResponse && customersResponse.data) {
-                    const customers = customersResponse.data;
-                    const totalCustomers = customers.length;
-                    
-                    // حساب العملاء الجدد في الأسبوع الماضي
-                    const oneWeekAgo = new Date();
-                    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-                    
-                    const newCustomers = customers.filter(c => 
-                        new Date(c.createdAt) >= oneWeekAgo
-                    ).length;
-                    
-                    document.getElementById('totalCustomers').textContent = totalCustomers.toString();
-                    document.getElementById('newCustomers').innerHTML = `
-                        <i class="fas fa-user-plus mr-1"></i>
-                        ${newCustomers} عملاء جدد هذا الأسبوع
-                    `;
-                }
-            } catch (error) {
-                console.error('Error fetching customers stats:', error);
-            }
-        }
-        
-        // جلب الفواتير الأخيرة
-        async function fetchRecentInvoices() {
-            try {
-                const invoicesResponse = await apiRequest('/invoices?limit=5');
-                
-                if (invoicesResponse && invoicesResponse.data) {
-                    const invoices = invoicesResponse.data.slice(0, 5);
-                    updateInvoicesTable(invoices);
-                }
-            } catch (error) {
-                console.error('Error fetching recent invoices:', error);
-                updateInvoicesTable([]);
-            }
-        }
-        
-        // تحديث قائمة المنتجات منخفضة المخزون
-        function updateLowStockProducts(products) {
-            const container = document.getElementById('lowStockProducts');
-            const countElement = document.getElementById('lowStockCount');
-            
-            if (products.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center text-green-600 py-4">
-                        <i class="fas fa-check-circle text-2xl mb-2"></i>
-                        <p>جميع المنتجات متوفرة في المخزون</p>
-                    </div>
-                `;
-                countElement.classList.add('hidden');
-            } else {
-                container.innerHTML = products.map(product => `
-                    <div class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
-                        <div>
-                            <p class="text-sm font-medium text-gray-800 dark:text-white">${product.name}</p>
-                            <p class="text-xs text-red-600 dark:text-red-400">متبقي: ${product.stockQuantity} ${product.unit || 'قطعة'}</p>
-                        </div>
-                        <i class="fas fa-exclamation-triangle text-red-500"></i>
-                    </div>
-                `).join('');
-                
-                countElement.textContent = products.length;
-                countElement.classList.remove('hidden');
-            }
-        }
-        
-        // تحديث جدول الفواتير
-        function updateInvoicesTable(invoices) {
-            const tbody = document.getElementById('invoicesTableBody');
-            
-            if (invoices.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="5" class="px-6 py-4 text-center text-gray-500">
-                            لا توجد فواتير متاحة
-                        </td>
-                    </tr>
-                `;
-                return;
-            }
-            
-            tbody.innerHTML = invoices.map(invoice => {
-                const statusClass = {
-                    'paid': 'bg-green-100 text-green-800',
-                    'partially_paid': 'bg-yellow-100 text-yellow-800',
-                    'pending': 'bg-blue-100 text-blue-800',
-                    'cancelled': 'bg-red-100 text-red-800'
-                }[invoice.status] || 'bg-gray-100 text-gray-800';
-                
-                const statusText = {
-                    'paid': 'مدفوعة',
-                    'partially_paid': 'مدفوعة جزئياً',
-                    'pending': 'معلقة',
-                    'cancelled': 'ملغية'
-                }[invoice.status] || invoice.status;
-                
-                const customerName = invoice.customer?.name || 'غير محدد';
-                const invoiceDate = new Date(invoice.date || invoice.createdAt).toLocaleDateString('ar-LY');
-                
-                return `
-                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">${invoice.invoiceNumber}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">${customerName}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white font-medium">${invoice.totalAmount.toFixed(2)} د.ل</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${statusClass}">
-                                ${statusText}
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">${invoiceDate}</td>
-                    </tr>
-                `;
-            }).join('');
-        }
-        
         // ===================================
         // إعدادات الوضع المظلم والفاتح
         // ===================================
@@ -950,130 +624,155 @@
         // الرسوم البيانية التفاعلية
         // ===================================
         
-        let salesChart, categoriesChart;
-        
-        async function initializeCharts() {
-            try {
-                // رسم بياني للمبيعات الأسبوعية
-                await initializeSalesChart();
-                
-                // رسم بياني دائري للفئات
-                await initializeCategoriesChart();
-            } catch (error) {
-                console.error('Error initializing charts:', error);
-            }
-        }
-        
-        async function initializeSalesChart() {
-            try {
-                // جلب بيانات المبيعات للأسبوع الماضي
-                const endDate = new Date();
-                const startDate = new Date();
-                startDate.setDate(endDate.getDate() - 7);
-                
-                const transactionsResponse = await apiRequest(
-                    `/transactions?startDate=${startDate.toISOString().split('T')[0]}&endDate=${endDate.toISOString().split('T')[0]}&type=income`
-                );
-                
-                // معالجة البيانات لإنشاء الرسم البياني
-                const salesData = Array(7).fill(0);
-                const labels = ['السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'];
-                
-                if (transactionsResponse && transactionsResponse.data) {
-                    transactionsResponse.data.forEach(transaction => {
-                        const transactionDate = new Date(transaction.date);
-                        const dayIndex = transactionDate.getDay();
-                        salesData[dayIndex] += transaction.amount;
-                    });
-                }
-                
-                const salesCtx = document.getElementById('salesChart').getContext('2d');
-                salesChart = new Chart(salesCtx, {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'المبيعات (د.ل)',
-                            data: salesData,
-                            borderColor: '#5D5CDE',
-                            backgroundColor: 'rgba(93, 92, 222, 0.1)',
-                            fill: true,
-                            tension: 0.4
-                        }]
+        function initializeCharts() {
+            // رسم بياني للمبيعات الأسبوعية
+            const salesCtx = document.getElementById('salesChart').getContext('2d');
+            new Chart(salesCtx, {
+                type: 'line',
+                data: {
+                    labels: ['السبت', 'الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'],
+                    datasets: [{
+                        label: 'المبيعات (د.ل)',
+                        data: [1200, 1900, 3000, 5000, 2000, 3000, 2450],
+                        borderColor: '#5D5CDE',
+                        backgroundColor: 'rgba(93, 92, 222, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    callback: function(value) {
-                                        return value.toLocaleString('ar-LY') + ' د.ل';
-                                    }
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toLocaleString('ar-LY') + ' د.ل';
                                 }
                             }
                         }
                     }
-                });
-            } catch (error) {
-                console.error('Error initializing sales chart:', error);
-            }
-        }
-        
-        async function initializeCategoriesChart() {
-            try {
-                // جلب بيانات المنتجات لحساب الفئات
-                const productsResponse = await apiRequest('/products');
-                
-                const categoryData = {};
-                const defaultCategories = ['الإلكترونيات', 'الملابس', 'الطعام', 'المنزل', 'أخرى'];
-                
-                if (productsResponse && productsResponse.data) {
-                    productsResponse.data.forEach(product => {
-                        const category = product.category || 'أخرى';
-                        categoryData[category] = (categoryData[category] || 0) + 1;
-                    });
                 }
-                
-                // إعداد البيانات للرسم البياني
-                const labels = Object.keys(categoryData).length > 0 ? Object.keys(categoryData) : defaultCategories;
-                const data = labels.map(label => categoryData[label] || 0);
-                
-                const categoriesCtx = document.getElementById('categoriesChart').getContext('2d');
-                categoriesChart = new Chart(categoriesCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            data: data,
-                            backgroundColor: [
-                                '#5D5CDE',
-                                '#10B981',
-                                '#F59E0B',
-                                '#EF4444',
-                                '#8B5CF6'
-                            ]
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'bottom'
-                            }
+            });
+            
+            // رسم بياني دائري للفئات
+            const categoriesCtx = document.getElementById('categoriesChart').getContext('2d');
+            new Chart(categoriesCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['الإلكترونيات', 'الملابس', 'الطعام', 'المنزل', 'أخرى'],
+                    datasets: [{
+                        data: [35, 25, 20, 15, 5],
+                        backgroundColor: [
+                            '#5D5CDE',
+                            '#10B981',
+                            '#F59E0B',
+                            '#EF4444',
+                            '#8B5CF6'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
                         }
                     }
-                });
-            } catch (error) {
-                console.error('Error initializing categories chart:', error);
-            }
+                }
+            });
+        }
+        
+        // ===================================
+        // تحميل وعرض البيانات
+        // ===================================
+        
+        function loadTransactionsData() {
+            const transactions = [
+                { id: 'INV-001', customer: 'أحمد علي', amount: 250.00, status: 'مكتملة', date: '2024-01-15' },
+                { id: 'INV-002', customer: 'فاطمة محمد', amount: 180.50, status: 'قيد المعالجة', date: '2024-01-15' },
+                { id: 'INV-003', customer: 'خالد الصادق', amount: 320.75, status: 'مكتملة', date: '2024-01-14' },
+                { id: 'INV-004', customer: 'مريم عبدالله', amount: 95.00, status: 'مرفوضة', date: '2024-01-14' },
+                { id: 'INV-005', customer: 'عمر الطيب', amount: 450.25, status: 'مكتملة', date: '2024-01-13' }
+            ];
+            
+            const tbody = document.getElementById('transactionsTableBody');
+            tbody.innerHTML = transactions.map(trans => {
+                const statusClass = {
+                    'مكتملة': 'bg-green-100 text-green-800',
+                    'قيد المعالجة': 'bg-yellow-100 text-yellow-800',
+                    'مرفوضة': 'bg-red-100 text-red-800'
+                }[trans.status];
+                
+                return `
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">${trans.id}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">${trans.customer}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white font-medium">${trans.amount.toFixed(2)} د.ل</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${statusClass}">
+                                ${trans.status}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">${trans.date}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        function loadLowStockProducts() {
+            const lowStockItems = [
+                { name: 'هاتف سامسونغ A54', stock: 2, min: 10 },
+                { name: 'سماعات بلوتوث', stock: 1, min: 5 },
+                { name: 'كابل USB-C', stock: 3, min: 15 },
+                { name: 'حافظة هاتف', stock: 0, min: 8 }
+            ];
+            
+            const container = document.getElementById('lowStockProducts');
+            container.innerHTML = lowStockItems.map(item => `
+                <div class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-900/20 rounded-lg">
+                    <div>
+                        <p class="text-sm font-medium text-gray-800 dark:text-white">${item.name}</p>
+                        <p class="text-xs text-red-600 dark:text-red-400">متبقي: ${item.stock} من ${item.min}</p>
+                    </div>
+                    <i class="fas fa-exclamation-triangle text-red-500"></i>
+                </div>
+            `).join('');
+        }
+        
+        function loadNotifications() {
+            const notifications = [
+                { title: 'طلب جديد', message: 'تم استلام طلب جديد من أحمد علي', time: 'منذ 5 دقائق', type: 'success' },
+                { title: 'تنبيه مخزون', message: 'نفد مخزون هاتف سامسونغ A54', time: 'منذ 15 دقيقة', type: 'warning' },
+                { title: 'دفعة جديدة', message: 'تم استلام دفعة 450.25 د.ل', time: 'منذ ساعة', type: 'info' }
+            ];
+            
+            const container = document.getElementById('notificationsList');
+            container.innerHTML = notifications.map(notif => {
+                const iconClass = {
+                    'success': 'fas fa-check-circle text-green-500',
+                    'warning': 'fas fa-exclamation-triangle text-yellow-500',
+                    'info': 'fas fa-info-circle text-blue-500'
+                }[notif.type];
+                
+                return `
+                    <div class="flex space-x-3 space-x-reverse p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="${iconClass} text-lg mt-1"></i>
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-gray-800 dark:text-white">${notif.title}</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">${notif.message}</p>
+                            <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">${notif.time}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
         
         // ===================================
@@ -1115,48 +814,13 @@
         }
         
         // ===================================
-        // دوال تحميل البيانات الرئيسية
-        // ===================================
-        
-        async function loadDashboardData() {
-            try {
-                showLoadingOverlay(true);
-                
-                // تحميل جميع البيانات بشكل متوازي
-                await Promise.all([
-                    fetchSalesStats(),
-                    fetchProductsStats(),
-                    fetchCustomersStats(),
-                    fetchRecentInvoices()
-                ]);
-                
-                // إخفاء مؤشر التحميل وإظهار المحتوى
-                showLoadingOverlay(false);
-                document.getElementById('mainContent').classList.add('content-loaded');
-                
-            } catch (error) {
-                console.error('Error loading dashboard data:', error);
-                showToast('حدث خطأ في تحميل بيانات لوحة التحكم', 'error');
-                showLoadingOverlay(false);
-            }
-        }
-        
-        function showLoadingOverlay(show) {
-            const overlay = document.getElementById('loadingOverlay');
-            if (show) {
-                overlay.classList.remove('hidden');
-            } else {
-                overlay.classList.add('hidden');
-            }
-        }
-        
-        // ===================================
         // معالجات الأحداث
         // ===================================
         
         // إدارة نافذة الإشعارات
         document.getElementById('notificationsBtn').addEventListener('click', function() {
             document.getElementById('notificationsModal').classList.remove('hidden');
+            loadNotifications();
         });
         
         document.getElementById('closeNotifications').addEventListener('click', function() {
@@ -1173,34 +837,20 @@
         // معالج تسجيل الخروج
         document.getElementById('logoutBtn').addEventListener('click', function() {
             if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
-                localStorage.removeItem('token');
-                localStorage.removeItem('userData');
                 showToast('تم تسجيل الخروج بنجاح', 'success');
+                // إعادة توجيه إلى صفحة تسجيل الدخول
                 setTimeout(() => {
                     window.location.href = '/login.html';
-                }, 1000);
+                }, 2000);
             }
         });
         
-        // معالج تحديث الرسوم البيانية
-        document.getElementById('weeklyChart').addEventListener('click', function() {
-            // تفعيل الزر الأسبوعي
-            this.className = 'px-3 py-1 text-sm bg-primary-100 text-primary-700 rounded-lg';
-            document.getElementById('monthlyChart').className = 'px-3 py-1 text-sm text-gray-500 hover:bg-gray-100 rounded-lg';
-            
-            // إعادة تحميل الرسم البياني الأسبوعي
-            if (salesChart) {
-                salesChart.destroy();
-            }
-            initializeSalesChart();
-        });
-        
-        document.getElementById('monthlyChart').addEventListener('click', function() {
-            // تفعيل الزر الشهري
-            this.className = 'px-3 py-1 text-sm bg-primary-100 text-primary-700 rounded-lg';
-            document.getElementById('weeklyChart').className = 'px-3 py-1 text-sm text-gray-500 hover:bg-gray-100 rounded-lg';
-            
-            showToast('سيتم إضافة العرض الشهري قريباً', 'info');
+        // معالجات الإجراءات السريعة
+        document.querySelectorAll('.quick-action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const action = this.querySelector('span').textContent;
+                showToast(`تم تحديد إجراء: ${action}`, 'info');
+            });
         });
         
         // ===================================
@@ -1239,57 +889,48 @@
         
         // تحديث البيانات في الوقت الفعلي
         function startRealTimeUpdates() {
-            // تحديث البيانات كل 5 دقائق
-            setInterval(async () => {
-                try {
-                    await fetchSalesStats();
-                    await fetchRecentInvoices();
-                } catch (error) {
-                    console.error('Error in real-time update:', error);
+            setInterval(() => {
+                // تحديث الإحصائيات (محاكاة)
+                const salesElement = document.getElementById('todaySales');
+                if (salesElement) {
+                    const currentValue = parseFloat(salesElement.textContent.replace(/[^\d.]/g, ''));
+                    const newValue = currentValue + (Math.random() * 100);
+                    salesElement.textContent = newValue.toFixed(2) + ' د.ل';
                 }
-            }, 300000); // 5 دقائق
+            }, 30000); // كل 30 ثانية
         }
         
         // ===================================
         // تهيئة التطبيق عند تحميل الصفحة
         // ===================================
         
-        document.addEventListener('DOMContentLoaded', async function() {
-            try {
-                // تهيئة الوضع المظلم
-                initializeDarkMode();
-                
-                // تهيئة القائمة الجانبية
-                initializeSidebar();
-                
-                // التحقق من المصادقة
-                const userData = await checkAuth();
-                if (!userData) return;
-                
-                // تحميل بيانات لوحة التحكم
-                await loadDashboardData();
-                
-                // تهيئة الرسوم البيانية
-                await initializeCharts();
-                
-                // تحسين الأداء
-                optimizePerformance();
-                initializeLazyLoading();
-                
-                // بدء التحديثات في الوقت الفعلي
-                startRealTimeUpdates();
-                
-                // إظهار رسالة ترحيب
-                setTimeout(() => {
-                    showToast(`مرحباً ${userData.name}! تم تحميل لوحة التحكم بنجاح`, 'success');
-                }, 1000);
-                
-                console.log('تم تحميل لوحة التحكم بنجاح مع البيانات الحقيقية');
-                
-            } catch (error) {
-                console.error('Error initializing dashboard:', error);
-                showToast('حدث خطأ في تحميل لوحة التحكم', 'error');
-            }
+        document.addEventListener('DOMContentLoaded', function() {
+            // تهيئة الوضع المظلم
+            initializeDarkMode();
+            
+            // تهيئة القائمة الجانبية
+            initializeSidebar();
+            
+            // تحميل البيانات
+            loadTransactionsData();
+            loadLowStockProducts();
+            
+            // تهيئة الرسوم البيانية
+            initializeCharts();
+            
+            // تحسين الأداء
+            optimizePerformance();
+            initializeLazyLoading();
+            
+            // بدء التحديثات في الوقت الفعلي
+            startRealTimeUpdates();
+            
+            // إظهار رسالة ترحيب
+            setTimeout(() => {
+                showToast('مرحباً بك في لوحة التحكم!', 'success');
+            }, 1000);
+            
+            console.log('تم تحميل لوحة التحكم بنجاح');
         });
         
         // معالج الأخطاء العام
@@ -1301,16 +942,6 @@
         // حفظ حالة التطبيق قبل إغلاق الصفحة
         window.addEventListener('beforeunload', function() {
             localStorage.setItem('lastVisit', new Date().toISOString());
-        });
-        
-        // معالج الاتصال بالإنترنت
-        window.addEventListener('online', function() {
-            showToast('تم استعادة الاتصال بالإنترنت', 'success');
-            loadDashboardData();
-        });
-        
-        window.addEventListener('offline', function() {
-            showToast('تم فقدان الاتصال بالإنترنت', 'warning');
         });
     </script>
 </body>
